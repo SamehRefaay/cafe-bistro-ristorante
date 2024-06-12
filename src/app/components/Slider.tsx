@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 
@@ -17,18 +18,18 @@ const Slider = ({ images }: Props) => {
 	const [slide, setSlide] = useState(0);
 	const [slideAnimation, setSlideAnimation] = useState(false);
 	const [textAnimation, setTextAnimation] = useState(false);
-	const dots = [...new Array(images.length)];
+	const dots = [...new Array(images?.length)];
 
-	useEffect(() => {
-		const interval = setInterval(handleShowNext, 4000);
-		return () => {
-			clearInterval(interval);
-		};
-	}, []);
+	// useEffect(() => {
+	// 	const interval = setInterval(handleShowNext, 4000);
+	// 	return () => {
+	// 		clearInterval(interval);
+	// 	};
+	// }, []);
 
-	useEffect(() => {
-		setTextAnimation(true);
-	}, []);
+	// useEffect(() => {
+	// 	setTextAnimation(true);
+	// }, []);
 
 	const handleShowPrev = () => {
 		setSlideAnimation(true);
@@ -60,15 +61,15 @@ const Slider = ({ images }: Props) => {
 					className={`duration-[4000] ${
 						slideAnimation ? 'animate-fadeIn' : ''
 					}`}
-					src={images[slide].src}
-					alt={images[slide].alt}
+					src={images[slide]?.src}
+					alt={images[slide]?.alt}
 					fill
 				/>
 			</div>
 
 			{/* previous button */}
 			<button
-				className="absolute left-10 top-[50%] w-16 h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center"
+				className="absolute left-10 top-[50%] w-16 h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center transition-all duration-300 hover:bg-primary-red"
 				onClick={handleShowPrev}
 			>
 				<MdNavigateBefore size={30} />
@@ -76,7 +77,8 @@ const Slider = ({ images }: Props) => {
 
 			{/* next button */}
 			<button
-				className="absolute right-10 top-[50%] w-16 h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center"
+				className="absolute right-10 top-[50%] w-16 h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center
+				transition-all duration-300 hover:bg-primary-red"
 				onClick={handleShowNext}
 			>
 				<MdNavigateNext size={30} />
@@ -103,13 +105,16 @@ const Slider = ({ images }: Props) => {
 				>
 					Bistro Place
 				</h1>
-				<button
-					className={`mt-4 bg-white py-2 px-4 rounded-lg uppercase text-black hover:bg-primary-red hover:text-white scale-0 transition-all delay-1000 duration-1000 ${
+				<Link
+					href="/menu"
+					className={`block w-[150px] h-10 mx-auto  mt-4  rounded-lg scale-0 transition-all delay-1000 duration-1000 ${
 						textAnimation ? 'opacity-100 scale-100' : 'opacity-0 '
 					}`}
 				>
-					look menu
-				</button>
+					<span className="w-full h-full bg-white rounded-lg grid place-content-center uppercase text-black transition-all duration-300 hover:bg-primary-red hover:text-white">
+						look menu
+					</span>
+				</Link>
 			</div>
 
 			{/* dots */}

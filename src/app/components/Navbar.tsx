@@ -83,7 +83,7 @@ const Navbar = () => {
 				<div className="flex gap-8">
 					{links.map(link => (
 						<Link
-							className={`uppercase hover:text-primary-red ${
+							className={`uppercase transition-all duration-300 hover:text-primary-red ${
 								headerBackground ? 'text-black' : 'text-white'
 							}`}
 							key={link.id}
