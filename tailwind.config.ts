@@ -1,5 +1,3 @@
-import { url } from 'inspector';
-import { transform } from 'next/dist/build/swc';
 import type { Config } from 'tailwindcss';
 
 const defaultTheme = require('tailwindcss/defaultTheme');
@@ -10,12 +8,14 @@ const config: Config = {
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
+	// safelist: ['animate-[fade-in-down_1s_ease-in-out]'],
 	theme: {
 		extend: {
 			colors: {
 				// 'primary-red': '#ec1d25',
 				'primary-red': '#d61c22',
 				'primary-gray': '#ececec',
+				'gray-pattern-1': '#eeeeee',
 				'primary-gray-dark': '#333333',
 			},
 			fontFamily: {
@@ -31,20 +31,42 @@ const config: Config = {
 			},
 			animation: {
 				fadeIn: 'FadeIn 0.5s ease-in-out',
-				moveDown: 'MoveDown 5s infinite',
+				scaleUp: 'ScaleUp 1s ease-in-out',
+				rotate360: 'rotate360 1s ease-in-out',
+				SlideRight: 'slide 1s ease-in-out',
+				fadeInDown: 'fadeInDown 1s ease-in-out',
 			},
 			keyframes: {
 				FadeIn: {
 					from: { opacity: '0.7' },
 					to: { opacity: '1' },
 				},
-				MoveDown: {
-					form: { opacity: '0', top: '25%' },
-					to: { opacity: '1', top: '50%' },
+				ScaleUp: {
+					from: { opacity: '0', scale: '0' },
+					to: { opacity: '1', scale: '100%' },
+				},
+				rotate360: {
+					'0%': { opacity: '0', left: '50%', rotate: '360deg' },
+					'100%': { opacity: '1', left: '50%', rotate: '0deg' },
+				},
+				fadeInDown: {
+					'0%': {
+						opacity: '0',
+						left: '50%',
+						top: '0%',
+						transform: 'translateX(-50%) translateY(0%)',
+					},
+
+					'100%': {
+						opacity: '1',
+						left: '50%',
+						top: '50%',
+						transform: 'translateX(-50%) translateY(-50%)',
+					},
 				},
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require('tw-elements/plugin.cjs')],
 };
 export default config;

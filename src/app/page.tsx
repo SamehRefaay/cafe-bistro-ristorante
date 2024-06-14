@@ -3,6 +3,10 @@ import OurStory from './components/OurStory';
 import Discover from './components/Discover';
 import Features from './components/Features';
 import OurMenu from './components/OurMenu';
+import CustomSlide from './components/CustomSlider';
+import Events from './components/Events';
+import Reservation from './components/Reservation';
+import Review from './components/Review';
 
 export default function Home() {
 	const slides = [
@@ -13,13 +17,15 @@ export default function Home() {
 
 	return (
 		<main className="w-full flex flex-col">
-			{/* Slider */}
-			<Slider images={slides} />
+			{/* <Slider images={slides} />
 			<OurStory />
 			<Discover />
 			<Features />
 			<OurMenu />
-			<div className="w-full h-[600px]"> new</div>
+			<Events /> */}
+
+			{/* <Reservation /> */}
+			<Review />
 		</main>
 	);
 }

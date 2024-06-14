@@ -43,8 +43,8 @@ const OurMenu = () => {
 		},
 	];
 	return (
-		<section className="w-full bg-[#f5f2ec] py-20">
-			<div className="max-w-7xl mx-auto border">
+		<section className="w-full bg-[#f5f2ec] py-32">
+			<div className="max-w-7xl mx-auto">
 				<CustomTitle firstTitle="Discover" secondTitle="Our Menu" variant={1} />
 				<div className="mt-20 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3">
 					{data.map((item, index) => (
