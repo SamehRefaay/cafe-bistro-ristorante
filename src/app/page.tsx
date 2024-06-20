@@ -1,12 +1,13 @@
-import Slider from './components/Slider';
 import OurStory from './components/OurStory';
 import Discover from './components/Discover';
 import Features from './components/Features';
 import OurMenu from './components/OurMenu';
-import CustomSlide from './components/CustomSlider';
 import Events from './components/Events';
 import Reservation from './components/Reservation';
 import Review from './components/Review';
+
+import Slider from './components/Slider';
+import OurVideo from './components/OurVideo';
 
 export default function Home() {
 	const slides = [
@@ -17,15 +18,16 @@ export default function Home() {
 
 	return (
 		<main className="w-full flex flex-col">
-			{/* <Slider images={slides} />
+			<Slider images={slides} />
 			<OurStory />
 			<Discover />
 			<Features />
 			<OurMenu />
-			<Events /> */}
-
-			{/* <Reservation /> */}
+			<Events />
+			<Reservation />
 			<Review />
+			<OurVideo />
+			<div className="h-screen">dds</div>
 		</main>
 	);
 }

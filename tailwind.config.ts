@@ -27,14 +27,16 @@ const config: Config = {
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 				'discover-bg': 'url(/intro-bg.jpg.webp)',
-				// "url('https://images.unsplash.com/photo-1535850452425-140ee4a8dbae?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+				'ourVideo-bg': 'url(/bg-cover-video-02.jpg.webp)',
 			},
 			animation: {
 				fadeIn: 'FadeIn 0.5s ease-in-out',
 				scaleUp: 'ScaleUp 1s ease-in-out',
 				rotate360: 'rotate360 1s ease-in-out',
 				SlideRight: 'slide 1s ease-in-out',
+				fadeInUp: 'fadeInUp 1s ease-in-out',
 				fadeInDown: 'fadeInDown 1s ease-in-out',
+				fadeInRight: 'fadeInRight 1s ease-in-out',
 			},
 			keyframes: {
 				FadeIn: {
@@ -52,11 +54,40 @@ const config: Config = {
 				fadeInDown: {
 					'0%': {
 						opacity: '0',
+						// left: '50%',
+						// top: '0%',
+						transform: 'translateY(20px)',
+					},
+
+					'100%': {
+						opacity: '1',
+						// left: '50%',
+						// top: '50%',
+						transform: 'translateY(0)',
+					},
+				},
+				fadeInUp: {
+					'0%': {
+						opacity: '0',
 						left: '50%',
-						top: '0%',
+						bottom: '0%',
 						transform: 'translateX(-50%) translateY(0%)',
 					},
 
+					'100%': {
+						opacity: '1',
+						left: '50%',
+						bottom: '50%',
+						transform: 'translateX(-50%) translateY(-50%)',
+					},
+				},
+				fadeInRight: {
+					'0%': {
+						opacity: '0',
+						left: '0',
+						top: '50%',
+						transform: 'translateX(-50%) translateY(0%)',
+					},
 					'100%': {
 						opacity: '1',
 						left: '50%',
