@@ -1,3 +1,63 @@
+export const features = [
+	{
+		id: '001',
+		title: 'Romantic Restaurant',
+		desc: 'Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.',
+		image: '/intro-01.jpg.webp',
+	},
+	{
+		id: '002',
+		title: 'Delicious Food',
+		desc: 'Duis elementum, risus sit amet lobortis nunc justo condimentum ligula, vitae feugiat',
+		image: '/intro-02.jpg.webp',
+	},
+	{
+		id: '003',
+		title: 'Red Wines you love',
+		desc: 'Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
+		image: '/intro-03.jpg.webp',
+	},
+];
+
+export const menuCategories = [
+	{
+		id: '001',
+		title: 'Launch',
+		href: '/menu/#launch',
+		image: '/our-menu-01.jpg.webp',
+	},
+	{
+		id: '002',
+		title: 'Dinner',
+		href: '/menu/#dinner',
+		image: '/our-menu-02.jpg.webp',
+	},
+	{
+		id: '003',
+		title: 'Drink',
+		href: '/menu/#drink',
+		image: '/our-menu-03.jpg.webp',
+	},
+	{
+		id: '004',
+		title: 'Starters',
+		href: '/menu/#starters',
+		image: '/our-menu-04.jpg.webp',
+	},
+	{
+		id: '005',
+		title: 'Happy Hour',
+		href: '/menu/#happy-hour',
+		image: '/our-menu-05.jpg.webp',
+	},
+	{
+		id: '006',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/our-menu-06.jpg.webp',
+	},
+];
+
 export const events = [
 	{
 		id: '0001',
@@ -55,5 +115,101 @@ export const reviews = [
 		review:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
 		rating: 5,
+	},
+];
+
+export const news = [
+	{
+		id: '001',
+		title: 'BEST PLACES FOR WINE',
+		desc: 'Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.',
+		image: '/blog-01.jpg.webp',
+	},
+	{
+		id: '002',
+		title: 'EGGS AND CHEESE',
+		desc: 'Duis elementum, risus sit amet lobortis nunc justo condimentum ligula, vitae feugiat',
+		image: '/blog-02.jpg.webp',
+	},
+	{
+		id: '003',
+		title: 'STYLE THE WEDDING PARTY',
+		desc: 'Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
+		image: '/blog-03.jpg.webp',
+	},
+];
+
+export const gallery = [
+	{
+		id: '001',
+		title: 'Launch',
+		href: '/menu/#launch',
+		image: '/photo-gallery-01.jpg.webp',
+	},
+	{
+		id: '002',
+		title: 'Dinner',
+		href: '/menu/#dinner',
+		image: '/photo-gallery-02.jpg.webp',
+	},
+	{
+		id: '003',
+		title: 'Drink',
+		href: '/menu/#drink',
+		image: '/photo-gallery-03.jpg.webp',
+	},
+	{
+		id: '004',
+		title: 'Starters',
+		href: '/menu/#starters',
+		image: '/photo-gallery-04.jpg.webp',
+	},
+	{
+		id: '005',
+		title: 'Happy Hour',
+		href: '/menu/#happy-hour',
+		image: '/photo-gallery-05.jpg.webp',
+	},
+	{
+		id: '006',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-06.jpg.webp',
+	},
+	{
+		id: '007',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-07.jpg.webp',
+	},
+	{
+		id: '008',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-08.jpg.webp',
+	},
+	{
+		id: '009',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-09.jpg.webp',
+	},
+	{
+		id: '010',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-10.jpg.webp',
+	},
+	{
+		id: '011',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-11.jpg.webp',
+	},
+	{
+		id: '012',
+		title: 'Desert',
+		href: '/menu/#desert',
+		image: '/photo-gallery-12.jpg.webp',
 	},
 ];

@@ -1,47 +1,10 @@
 import React from 'react';
 import CustomTitle from './CustomTitle';
-import Image from 'next/image';
 import MenuTypeItem from './MenuTypeItem';
+import { menuCategories } from '../lib/data';
 
 const OurMenu = () => {
-	const data = [
-		{
-			id: '001',
-			title: 'Launch',
-			href: '/menu/#launch',
-			image: '/our-menu-01.jpg.webp',
-		},
-		{
-			id: '002',
-			title: 'Dinner',
-			href: '/menu/#dinner',
-			image: '/our-menu-02.jpg.webp',
-		},
-		{
-			id: '003',
-			title: 'Drink',
-			href: '/menu/#drink',
-			image: '/our-menu-03.jpg.webp',
-		},
-		{
-			id: '004',
-			title: 'Starters',
-			href: '/menu/#starters',
-			image: '/our-menu-04.jpg.webp',
-		},
-		{
-			id: '005',
-			title: 'Happy Hour',
-			href: '/menu/#happy-hour',
-			image: '/our-menu-05.jpg.webp',
-		},
-		{
-			id: '006',
-			title: 'Desert',
-			href: '/menu/#desert',
-			image: '/our-menu-06.jpg.webp',
-		},
-	];
+	const data = menuCategories;
 	return (
 		<section className="w-full bg-[#f5f2ec] py-32">
 			<div className="max-w-7xl mx-auto">

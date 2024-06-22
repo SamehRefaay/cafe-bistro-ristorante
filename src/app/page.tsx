@@ -5,9 +5,9 @@ import OurMenu from './components/OurMenu';
 import Events from './components/Events';
 import Reservation from './components/Reservation';
 import Review from './components/Review';
-
 import Slider from './components/Slider';
 import OurVideo from './components/OurVideo';
+import Blog from './components/BLog';
 
 export default function Home() {
 	const slides = [
@@ -19,7 +19,7 @@ export default function Home() {
 	return (
 		<main className="w-full flex flex-col">
 			<Slider images={slides} />
-			<OurStory />
+			{/* <OurStory />
 			<Discover />
 			<Features />
 			<OurMenu />
@@ -27,7 +27,7 @@ export default function Home() {
 			<Reservation />
 			<Review />
 			<OurVideo />
-			<div className="h-screen">dds</div>
+			<Blog /> */}
 		</main>
 	);
 }

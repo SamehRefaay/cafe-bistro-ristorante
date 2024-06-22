@@ -20,7 +20,7 @@ const Events = () => {
 	const animations = [
 		'animate-fadeInDown',
 		'animate-scaleUp',
-		'animate-rotate360',
+		'animate-fadeInUp',
 	];
 
 	return (

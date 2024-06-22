@@ -11,12 +11,12 @@ const OurVideo = () => {
 					secondTitle="Our Video"
 					variant={2}
 				/>
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
-					<FaCirclePlay
-						size={80}
-						className="text-white transition-all duration-300 hover:text-primary-red hover:scale-125 hover:opacity-70"
-					/>
-				</div>
+			</div>
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+				<FaCirclePlay
+					size={80}
+					className="text-white transition-all duration-300 hover:text-primary-red hover:scale-125 hover:opacity-70"
+				/>
 			</div>
 		</section>
 	);

@@ -20,7 +20,7 @@ const MenuTypeItem = ({ title, href, image }: Props) => {
 			/>
 			<Link
 				href={href}
-				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-4 px-8 rounded-lg bg-white text-primary-gray-dark font-bold uppercase tracking-[5px] transition-all duration-300 hover:bg-primary-red hover:text-white"
+				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-4 px-8 rounded-lg bg-white bg-opacity-90 text-primary-gray-dark font-bold uppercase tracking-[5px] transition-all duration-300 hover:bg-primary-red  hover:bg-opacity-90 hover:text-white"
 			>
 				{title}
 			</Link>

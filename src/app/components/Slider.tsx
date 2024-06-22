@@ -20,16 +20,16 @@ const Slider = ({ images }: Props) => {
 	const [textAnimation, setTextAnimation] = useState(false);
 	const dots = [...new Array(images?.length)];
 
-	// useEffect(() => {
-	// 	const interval = setInterval(handleShowNext, 4000);
-	// 	return () => {
-	// 		clearInterval(interval);
-	// 	};
-	// }, []);
+	useEffect(() => {
+		const interval = setInterval(handleShowNext, 4000);
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
 
-	// useEffect(() => {
-	// 	setTextAnimation(true);
-	// }, []);
+	useEffect(() => {
+		setTextAnimation(true);
+	}, []);
 
 	const handleShowPrev = () => {
 		setSlideAnimation(true);
@@ -58,7 +58,7 @@ const Slider = ({ images }: Props) => {
 		<div className="w-full h-screen">
 			<div className="relative -top-[96px] left-0 w-full h-screen">
 				<Image
-					className={`duration-[4000] ${
+					className={`duration-[4000] object-cover ${
 						slideAnimation ? 'animate-fadeIn' : ''
 					}`}
 					src={images[slide]?.src}
@@ -69,26 +69,26 @@ const Slider = ({ images }: Props) => {
 
 			{/* previous button */}
 			<button
-				className="absolute left-10 top-[50%] w-16 h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center transition-all duration-300 hover:bg-primary-red"
+				className="absolute left-10 top-[50%] w-10 h-10 md:w-16 md:h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center transition-all duration-300 hover:bg-primary-red"
 				onClick={handleShowPrev}
 			>
-				<MdNavigateBefore size={30} />
+				<MdNavigateBefore className="w-6 h-6 md:w-8 md:h-8" />
 			</button>
 
 			{/* next button */}
 			<button
-				className="absolute right-10 top-[50%] w-16 h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center
+				className="absolute right-10 top-[50%] w-10 h-10 md:w-16 md:h-16 rounded-full bg-black bg-opacity-70 text-white flex justify-center items-center
 				transition-all duration-300 hover:bg-primary-red"
 				onClick={handleShowNext}
 			>
-				<MdNavigateNext size={30} />
+				<MdNavigateNext className="w-6 h-6 md:w-8 md:h-8" />
 			</button>
 
 			{/*  text */}
 
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+			<div className="flex flex-col gap-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
 				<h1
-					className={`font-courgette text-white text-6xl transition-all duration-1000 ${
+					className={`font-courgette text-white text-4xl md:text-5xl lg:text-6xl transition-all duration-1000 ${
 						textAnimation
 							? 'opacity-100 translate-y-0'
 							: '-translate-y-20 opacity-0 duration-0'
@@ -97,7 +97,7 @@ const Slider = ({ images }: Props) => {
 					welcome to
 				</h1>
 				<h1
-					className={`font-poppins font-bold uppercase text-white text-8xl transition-all delay-500 duration-1000 ${
+					className={`font-poppins font-bold uppercase text-white text-6xl md:text-7xl lg:text-8xl transition-all delay-500 duration-1000 ${
 						textAnimation
 							? 'opacity-100 translate-y-0'
 							: 'translate-y-20 opacity-0 duration-0'

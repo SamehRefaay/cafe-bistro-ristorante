@@ -16,7 +16,7 @@ const CustomLink = ({ title, href, alignment }: Props) => {
 					: alignment === 'center'
 					? 'justify-center'
 					: 'justify-end'
-			} text-gray-700 text-xs uppercase transition-colors duration-300 hover:text-primary-red`}
+			} text-gray-700 text-sm uppercase transition-colors duration-300 hover:text-primary-red`}
 		>
 			{title} <FaArrowRightLong size={12} />
 		</Link>
