@@ -1,12 +1,11 @@
 import React from 'react';
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 
 const SliderButton = ({ type }: { type: 'prev' | 'next' }) => {
 	return (
 		<div
-			className={`absolute top-1/2 ${
+			className={`hidden md:flex absolute top-1/2 ${
 				type === 'prev' ? 'right-0' : 'left-0'
-			}  -translate-y-1/2 w-14 h-14 rounded-full bg-black bg-opacity-90 text-white flex justify-center items-center transition-all duration-300 hover:bg-primary-red next-slick-arrow`}
+			}  -translate-y-1/2 w-8 h-8 lg:w-14 lg:h-14 rounded-full bg-black bg-opacity-90 text-white justify-center items-center transition-all duration-300 hover:bg-primary-red next-slick-arrow`}
 		>
 			<svg
 				fill="#ffffff"
@@ -19,7 +18,11 @@ const SliderButton = ({ type }: { type: 'prev' | 'next' }) => {
 				viewBox="0 0 24 24"
 				xmlSpace="preserve"
 				stroke="#ffffff"
-				className={type === 'prev' ? 'rotate-180' : ''}
+				className={
+					type === 'prev'
+						? 'rotate-180 w-4 h-4 lg:w-5 lg:h-5'
+						: 'rotate-0 w-4 h-4 lg:w-5 lg:h-5'
+				}
 			>
 				<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 				<g

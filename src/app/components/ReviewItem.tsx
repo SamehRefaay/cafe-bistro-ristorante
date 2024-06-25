@@ -18,7 +18,7 @@ interface Props {
 }
 const ReviewItem = ({ review, animation }: Props) => {
 	return (
-		<div className="py-10 flex flex-col justify-center items-center gap-10">
+		<div className="w-full p-2 md:p-5 lg:p-10 flex flex-col justify-center items-center gap-10">
 			<div
 				className={`w-[125px] h-[125px] border-[4px] border-primary-red rounded-full overflow-hidden transition-all ${
 					animation
@@ -36,13 +36,13 @@ const ReviewItem = ({ review, animation }: Props) => {
 			</div>
 
 			<div
-				className={`flex flex-col gap-5 text-center transition-all  ${
+				className={`w-full flex flex-col items-center gap-5 text-center transition-all  ${
 					animation
 						? 'opacity-100 -translate-y-5 duration-1000 delay-1000'
 						: 'opacity-0 translate-y-5 delay-200 duration-0'
 				}`}
 			>
-				<q className="text-lg font-normal text-[#666] lg:max-w-screen-sm">
+				<q className="border text-base md:text-lg lg:text-xl font-normal text-[#666] lg:max-w-screen-sm">
 					{' '}
 					{review.review}
 					{'. '}

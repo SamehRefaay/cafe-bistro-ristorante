@@ -12,11 +12,10 @@ const MenuTypeItem = ({ title, href, image }: Props) => {
 	return (
 		<div className="w-full h-full relative flex justify-center items-center overflow-hidden rounded-lg">
 			<Image
-				className="object-content rounded-lg transition-all duration-500 hover:scale-110"
+				className="object-cover rounded-lg transition-all duration-500 hover:scale-110"
 				src={image}
 				alt={`${title}-image`}
-				width={900}
-				height={600}
+				fill
 			/>
 			<Link
 				href={href}

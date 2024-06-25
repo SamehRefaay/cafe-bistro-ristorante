@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomTitle from './CustomTitle';
 import FeaturesItem from './FeaturesItem';
-import { news } from '../lib/data';
+import { news } from '../../lib/data';
 
 const Blog = () => {
 	const data = news;

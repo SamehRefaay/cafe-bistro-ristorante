@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomSlide from './CustomSlider';
 import EventItem from './EventItem';
-import { events } from '../lib/data';
+import { events } from '../../lib/data';
 
 const Events = () => {
 	const eventsData = {

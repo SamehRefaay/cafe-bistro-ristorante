@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { gallery } from '../lib/data';
+import { gallery } from '../../lib/data';
 
 const FooterGallery = () => {
 	const data = gallery;

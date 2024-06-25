@@ -18,15 +18,15 @@ export default function Home() {
 
 	return (
 		<main className="w-full flex flex-col">
-			<Slider images={slides} />
-			{/* <OurStory />
+			{/* <Slider images={slides} />*   */}
+			<OurStory />
 			<Discover />
-			<Features />
+			{/* <Features />
 			<OurMenu />
 			<Events />
-			<Reservation />
+			<Reservation /> */}
 			<Review />
-			<OurVideo />
+			{/* <OurVideo />
 			<Blog /> */}
 		</main>
 	);

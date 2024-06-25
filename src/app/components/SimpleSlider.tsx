@@ -32,10 +32,12 @@ export default function SimpleSlider({ items }: { items: any[] }) {
 		afterChange: () => setAnimation(true),
 	};
 	return (
-		<div className="max-w-7xl mx-auto">
+		<div className="w-[90%] mx-auto">
 			<Slider {...settings}>
 				{items.map(item => (
-					<ReviewItem key={item.id} review={item} animation={animation} />
+					<div key={item.id}>
+						<ReviewItem review={item} animation={animation} />
+					</div>
 				))}
 			</Slider>
 		</div>
