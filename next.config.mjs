@@ -9,6 +9,12 @@ const nextConfig = {
 				hostname: 'img.freepik.com',
 				pathname: '**',
 			},
+			// http://res.cloudinary.com/
+			{
+				protocol: 'http',
+				hostname: 'res.cloudinary.com',
+				pathname: '**',
+			},
 		],
 	},
 };

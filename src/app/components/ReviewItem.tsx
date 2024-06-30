@@ -42,7 +42,7 @@ const ReviewItem = ({ review, animation }: Props) => {
 						: 'opacity-0 translate-y-5 delay-200 duration-0'
 				}`}
 			>
-				<q className="border text-base md:text-lg lg:text-xl font-normal text-[#666] lg:max-w-screen-sm">
+				<q className="text-base md:text-lg lg:text-xl font-normal text-[#666] lg:max-w-screen-sm">
 					{' '}
 					{review.review}
 					{'. '}
