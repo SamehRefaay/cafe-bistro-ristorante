@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import CustomButton from './CustomButton';
 
-const ReservationForm = () => {
+const ReservationForm = ({ col = 2 }) => {
 	const [date, setDate] = useState(Date.now());
 
 	const options = [
@@ -21,7 +21,11 @@ const ReservationForm = () => {
 	];
 	return (
 		<form className="mt-16">
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+			<div
+				className={`grid grid-cols-1 ${
+					col === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 '
+				} gap-4 md:gap-8`}
+			>
 				{/* Date */}
 				<div className="flex flex-col gap-2">
 					<label htmlFor="date" className="text-sm text-[#666]">

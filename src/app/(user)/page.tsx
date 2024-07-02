@@ -23,7 +23,7 @@ export default function Home() {
 			<Discover />
 			<Features />
 			<OurMenu />
-			<Events />
+			{/* <Events /> */}
 			<Reservation />
 			<Review />
 			<OurVideo />

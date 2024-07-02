@@ -3,6 +3,7 @@ import { Inter, Montserrat } from 'next/font/google';
 import '@/app/styles/globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Providers } from '../components/Providers';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -23,11 +24,13 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={montserrat.className}>
-				{/* Header */}
-				<Navbar />
-				{children}
-				{/* Footer */}
-				<Footer />
+				<Providers>
+					{/* Header */}
+					<Navbar />
+					{children}
+					{/* Footer */}
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);

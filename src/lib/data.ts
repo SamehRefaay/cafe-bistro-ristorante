@@ -19,6 +19,42 @@ export const features = [
 	},
 ];
 
+export const galleryData = [
+	{
+		id: '013',
+		tag: ['all', 'events', 'vip'],
+		image: '/photo-gallery-13.jpg',
+	},
+	{ id: '014', tag: ['all', 'food'], image: '/photo-gallery-14.jpg' },
+	{
+		id: '015',
+		tag: ['all', 'events'],
+		image: '/photo-gallery-15.jpg',
+	},
+	{ id: '016', tag: ['all', 'food'], image: '/photo-gallery-16.jpg' },
+	{ id: '017', tag: ['all', 'food'], image: '/photo-gallery-17.jpg' },
+	{
+		id: '018',
+		tag: ['all', 'interior', 'vip'],
+		image: '/photo-gallery-18.jpg',
+	},
+	{
+		id: '019',
+		tag: ['all', 'interior'],
+		image: '/photo-gallery-19.jpg',
+	},
+	{
+		id: '020',
+		tag: ['all', 'interior'],
+		image: '/photo-gallery-20.jpg',
+	},
+	{
+		id: '009',
+		tag: ['all', 'events'],
+		image: '/photo-gallery-21.jpg',
+	},
+];
+
 // export const menuCategories = [
 // 	{
 // 		id: '001',
