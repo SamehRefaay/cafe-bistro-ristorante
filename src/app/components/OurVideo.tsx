@@ -2,9 +2,13 @@ import React from 'react';
 import CustomTitle from './CustomTitle';
 import { FaCirclePlay } from 'react-icons/fa6';
 
-const OurVideo = () => {
+const OurVideo = ({ bg }: { bg?: string }) => {
 	return (
-		<section className="relative w-full h-[700px] py-20 bg-fixed bg-ourVideo-bg">
+		<section
+			className={`relative w-full h-screen py-20 bg-fixed ${
+				bg ? bg : 'bg-ourVideo-bg'
+			}`}
+		>
 			<div className="w-full h-full flex flex-col items-center gap-10">
 				<CustomTitle
 					firstTitle="Discover"

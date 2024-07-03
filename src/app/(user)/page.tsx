@@ -1,4 +1,4 @@
-import OurStory from '../components/OurStory';
+import OurStory from '../components/CustomParagraph';
 import Discover from '../components/Discover';
 import Features from '../components/Features';
 import OurMenu from '../components/OurMenu';
@@ -8,6 +8,7 @@ import Review from '../components/Review';
 import Slider from '../components/Slider';
 import OurVideo from '../components/OurVideo';
 import Blog from '../components/BLog';
+import CustomParagraph from '../components/CustomParagraph';
 
 export default function Home() {
 	const slides = [
@@ -17,9 +18,14 @@ export default function Home() {
 	];
 
 	return (
-		<main className="w-full flex flex-col">
+		<main className="-mt-[96px] w-full flex flex-col">
 			<Slider images={slides} />
-			<OurStory />
+			<CustomParagraph
+				firstTitle="Italian Restaurant"
+				secondTitle="WELCOME"
+				text="Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia, nisl ante egestas mi, ac facilisis ligula sem id neque."
+				image="/our-story-01.jpg.webp"
+			/>
 			<Discover />
 			<Features />
 			<OurMenu />
