@@ -2,7 +2,12 @@
 import React, { useState } from 'react';
 import CustomButton from './CustomButton';
 
-const ReservationForm = ({ col = 2 }) => {
+interface Props {
+	col: number;
+	ordered: boolean;
+}
+
+const ReservationForm = ({ col, ordered }: Props) => {
 	const [date, setDate] = useState(Date.now());
 
 	const options = [
@@ -20,14 +25,14 @@ const ReservationForm = ({ col = 2 }) => {
 		{ value: 12, title: '12 people' },
 	];
 	return (
-		<form className="mt-16">
+		<form className="w-full mt-16">
 			<div
-				className={`grid grid-cols-1 ${
-					col === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 '
-				} gap-4 md:gap-8`}
+				className={`grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 ${
+					col === 3 ? 'md:grid-cols-3' : ''
+				}`}
 			>
 				{/* Date */}
-				<div className="flex flex-col gap-2">
+				<div className="order-1 flex flex-col gap-2">
 					<label htmlFor="date" className="text-sm text-[#666]">
 						Date
 					</label>
@@ -41,7 +46,9 @@ const ReservationForm = ({ col = 2 }) => {
 					/>
 				</div>
 				{/* Name */}
-				<div className="flex flex-col gap-2">
+				<div
+					className={`${ordered ? 'order-4' : 'order-2'} flex flex-col gap-2`}
+				>
 					<label htmlFor="name" className="text-sm text-[#666]">
 						Name
 					</label>
@@ -54,7 +61,9 @@ const ReservationForm = ({ col = 2 }) => {
 					/>
 				</div>
 				{/* Time */}
-				<div className="flex flex-col gap-2">
+				<div
+					className={`${ordered ? 'order-2' : 'order-3'} flex flex-col gap-2`}
+				>
 					<label htmlFor="time" className="text-sm text-[#666]">
 						Time
 					</label>
@@ -66,7 +75,9 @@ const ReservationForm = ({ col = 2 }) => {
 					/>
 				</div>
 				{/* Phone */}
-				<div className="flex flex-col gap-2">
+				<div
+					className={`${ordered ? 'order-5' : 'order-4'} flex flex-col gap-2`}
+				>
 					<label htmlFor="phone" className="text-sm text-[#666]">
 						Phone
 					</label>
@@ -79,7 +90,9 @@ const ReservationForm = ({ col = 2 }) => {
 					/>
 				</div>
 				{/* People */}
-				<div className="flex flex-col gap-2">
+				<div
+					className={`${ordered ? 'order-3' : 'order-5'} flex flex-col gap-2`}
+				>
 					<label htmlFor="people" className="text-sm text-[#666]">
 						People
 					</label>
@@ -96,7 +109,7 @@ const ReservationForm = ({ col = 2 }) => {
 					</select>
 				</div>
 				{/* Email */}
-				<div className="flex flex-col gap-2">
+				<div className="order-6 flex flex-col gap-2">
 					<label htmlFor="email" className="text-sm text-[#666]">
 						Email
 					</label>
@@ -109,7 +122,11 @@ const ReservationForm = ({ col = 2 }) => {
 					/>
 				</div>
 				{/* submit button */}
-				<div className="flex flex-col gap-2">
+				<div
+					className={`order-7 items-center md:col-span-2 ${
+						col === 3 ? 'lg:col-span-3' : ''
+					}  flex flex-col gap-2`}
+				>
 					<CustomButton
 						className=""
 						type="submit"

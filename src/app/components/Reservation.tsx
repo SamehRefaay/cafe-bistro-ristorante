@@ -14,7 +14,7 @@ const Reservation = () => {
 						variant={1}
 					/>
 					{/* Reservation form */}
-					<ReservationForm />
+					<ReservationForm ordered={false} />
 				</div>
 				<div className="col-span-1 flex justify-center items-center">
 					<div className="w-full h-full md:w-[75%] md:h-[75%]  m-auto rounded-lg overflow-hidden">

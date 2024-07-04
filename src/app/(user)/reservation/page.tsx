@@ -6,8 +6,8 @@ const ReservationPage = () => {
 	return (
 		<main className="w-full -mt-[96px]">
 			<PageHeader image="/bg-title-page-02.jpg.webp" title="Reservation" />
-			<div className="w-full py-20 max-w-7xl mx-auto">
-				<ReservationForm col={3} />
+			<div className="w-full py-20 px-4 lg:px-0 max-w-7xl mx-auto">
+				<ReservationForm col={3} ordered={true} />
 				<div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-10">
 					<div className="flex flex-col gap-5">
 						<h3 className="text-2xl font-poppins leading-7 tracking-[3px] font-medium uppercase">

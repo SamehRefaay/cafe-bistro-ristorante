@@ -36,8 +36,7 @@ const Menu = async () => {
 
 	return (
 		<div className="w-full -mt-[96px]">
-			<PageHeader image="/bg-menu.jpg.webp" title="" />
-			<AdminControl />
+			<PageHeader image="/bg-menu.jpg.webp" title="Bistro" />
 			{/* starters - main - drinks - desert */}
 			<MenuCategories categories={reorderedArray} />
 			{/*  launch - dinner */}

@@ -13,9 +13,9 @@ interface Props {
 const ChefCard = ({ chef }: Props) => {
 	return (
 		<div className="relative">
-			<div className="absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-[4px] border-primary-red">
+			<div className="absolute group overflow-hidden top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-[4px] border-primary-red">
 				<Image
-					className="rounded-full object-cover"
+					className="rounded-full object-cover duration-500 transition-all group-hover:scale-110"
 					src={chef?.image}
 					alt="chef-image"
 					width={128}

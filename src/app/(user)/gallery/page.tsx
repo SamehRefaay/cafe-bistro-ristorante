@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { galleryData } from '../../../lib/data';
+import { Span } from 'next/dist/trace';
 
 type GalleryDataType = {
 	id: string;
@@ -53,18 +54,27 @@ const GalleryPage = () => {
 			<div className=" py-20 px-4 lg:px-0 bg-white">
 				<div className="max-w-7xl mx-auto">
 					{/* menu buttons */}
-					<div className="flex justify-center items-center gap-4">
-						{menu.map(item => (
+					<div className="flex justify-center items-center gap-2 lg:gap-4">
+						{menu.map((item, index) => (
 							<button
 								key={item.id}
-								className={`py-1 px-5 font-poppins rounded-lg uppercase ${
+								className={`py-1 px-2 lg:px-5 font-poppins rounded-lg uppercase ${
 									currentTag === item.tag
 										? 'bg-black text-[#eee]'
 										: 'bg-white text-[#222]'
 								}`}
 								onClick={() => handleMenuBtnClick(item.tag)}
 							>
-								{item.title}
+								{index === 0 || index === menu.length - 1 ? (
+									<>
+										<span className="inline md:hidden">
+											{item.title.substring(0, 3)}
+										</span>
+										<span className="hidden md:inline">{item.title}</span>
+									</>
+								) : (
+									<span>{item.title}</span>
+								)}
 							</button>
 						))}
 					</div>
