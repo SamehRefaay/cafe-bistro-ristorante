@@ -22,7 +22,7 @@ const ChefCard = ({ chef }: Props) => {
 					height={128}
 				/>
 			</div>
-			<div className="border py-20 px-5 lg:px-10 text-center ">
+			<div className="border rounded-lg py-20 px-5 lg:px-10 text-center">
 				<h3 className="font-poppins text-[18px] text-[#333] font-bold leading-[1.4]">
 					{chef?.name}
 				</h3>

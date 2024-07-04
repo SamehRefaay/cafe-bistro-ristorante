@@ -4,8 +4,8 @@ import React from 'react';
 
 const ReservationPage = () => {
 	return (
-		<div className="w-full -mt-[96px]">
-			<PageHeader image="/reservation-header-bg.jpg.webp" title="Reservation" />
+		<main className="w-full -mt-[96px]">
+			<PageHeader image="/bg-title-page-02.jpg.webp" title="Reservation" />
 			<div className="w-full py-20 max-w-7xl mx-auto">
 				<ReservationForm col={3} />
 				<div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-10">
@@ -33,7 +33,7 @@ const ReservationPage = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 	);
 };
 

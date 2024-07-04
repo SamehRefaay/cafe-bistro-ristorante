@@ -8,7 +8,7 @@ import { chefData } from '@/lib/data';
 const AboutUsPage = () => {
 	const data = chefData;
 	return (
-		<section className="w-full -mt-[96px]">
+		<main className="w-full -mt-[96px]">
 			<PageHeader image="/aboutus-header-bg.jpg.webp" title="About Us" />
 			{/* container */}
 			<div className="w-full px-4 lg:px-0 py-20 max-w-7xl mx-auto">
@@ -53,7 +53,7 @@ const AboutUsPage = () => {
 					))}
 				</div>
 			</div>
-		</section>
+		</main>
 	);
 };
 
