@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { galleryData } from '../../../lib/data';
 import { Span } from 'next/dist/trace';
+import Paging from '@/app/components/Paging';
 
 type GalleryDataType = {
 	id: string;
@@ -25,7 +26,6 @@ const GalleryPage = () => {
 	const [modalImg, setModalImg] = useState('');
 	const [data, setData] = useState<GalleryDataType[]>([]);
 	const [currentTag, setCurrentTag] = useState('all');
-	const [pageNum, setPageNum] = useState(1);
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	const menu = [
@@ -143,21 +143,7 @@ const GalleryPage = () => {
 						))}
 					</div>
 					{/* paging */}
-					<div className="mt-20 flex justify-center items-center gap-5">
-						{[...new Array(3)].map((item, index) => (
-							<button
-								key={index}
-								className={`w-8 h-8 rounded-full flex justify-center items-center  ${
-									pageNum === index + 1
-										? 'bg-black text-[#eee]'
-										: 'bg-white border text-[#333]'
-								}`}
-								onClick={() => setPageNum(index + 1)}
-							>
-								{index + 1}
-							</button>
-						))}
-					</div>
+					<Paging pages={3} />
 				</div>
 			</div>
 		</div>

@@ -16,3 +16,21 @@ export type ProductType = {
 	options: {}[];
 	cateSlug: String;
 };
+
+export type CommentType = {
+	postSlug: string;
+	id: number;
+	name: string;
+	email: string;
+	body: string;
+};
+export type PostType = {
+	slug: string;
+	auther: string;
+	dateTime: string;
+	title: string;
+	body: string;
+	image: string;
+	tags: string[];
+	comments: CommentType[];
+};

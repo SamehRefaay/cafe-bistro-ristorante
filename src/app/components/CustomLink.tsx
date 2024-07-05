@@ -10,13 +10,13 @@ const CustomLink = ({ title, href, alignment }: Props) => {
 	return (
 		<Link
 			href={href}
-			className={`mt-5 flex gap-2 items-center ${
+			className={`flex gap-2 items-center ${
 				alignment === 'left'
 					? 'justify-left'
 					: alignment === 'center'
 					? 'justify-center'
 					: 'justify-end'
-			} text-gray-700 text-sm uppercase transition-colors duration-300 hover:text-primary-red`}
+			} text-gray-700 text-sm uppercase font-medium transition-colors duration-300 hover:text-primary-red`}
 		>
 			{title} <FaArrowRightLong size={12} />
 		</Link>
