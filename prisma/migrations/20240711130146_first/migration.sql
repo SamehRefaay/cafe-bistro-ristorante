@@ -3,8 +3,7 @@ CREATE TABLE "Category" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "title" TEXT NOT NULL,
-    "desc" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
+    "images" TEXT[],
     "slug" TEXT NOT NULL,
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
@@ -16,32 +15,16 @@ CREATE TABLE "Product" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "title" TEXT NOT NULL,
     "desc" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
+    "image" TEXT,
     "price" DECIMAL(65,30) NOT NULL,
-    "isFeatured" BOOLEAN NOT NULL DEFAULT false,
     "options" JSONB[],
     "cateSlug" TEXT NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "Order" (
-    "id" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "price" DECIMAL(65,30) NOT NULL,
-    "products" JSONB[],
-    "status" TEXT NOT NULL,
-    "intent_id" TEXT NOT NULL,
-
-    CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "Category_slug_key" ON "Category"("slug");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Order_intent_id_key" ON "Order"("intent_id");
 
 -- AddForeignKey
 ALTER TABLE "Product" ADD CONSTRAINT "Product_cateSlug_fkey" FOREIGN KEY ("cateSlug") REFERENCES "Category"("slug") ON DELETE RESTRICT ON UPDATE CASCADE;
