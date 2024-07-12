@@ -13,7 +13,6 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { galleryData } from '../../../lib/data';
-import { Span } from 'next/dist/trace';
 import Paging from '@/app/components/Paging';
 
 type GalleryDataType = {
