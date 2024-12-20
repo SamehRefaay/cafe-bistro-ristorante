@@ -1,26 +1,40 @@
 {
 	"name": "cafe_bistro_ristorante_website",
 	"version": "0.1.0",
+	"prisma": {
+		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+	},
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
+		"seed": "node prisma/seed.js",
 		"vercel-build": "prisma generate && prisma migrate deploy && next build"
 	},
 	"dependencies": {
+		"@heroicons/react": "^2.1.5",
 		"@nextui-org/react": "^2.4.2",
 		"@prisma/client": "^5.15.1",
-		"framer-motion": "^11.2.12",
+		"@types/bcrypt": "^5.0.2",
+		"bcrypt": "^5.1.1",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"framer-motion": "^11.3.2",
+		"lucide-react": "^0.469.0",
 		"next": "14.2.3",
+		"next-auth": "^4.24.7",
 		"react": "^18",
 		"react-countdown": "^2.3.5",
 		"react-dom": "^18",
 		"react-icons": "^5.2.1",
 		"react-slick": "^0.30.2",
 		"slick-carousel": "^1.8.1",
+		"swiper": "^11.1.15",
 		"swr": "^2.2.5",
+		"tailwind-merge": "^2.5.5",
+		"tailwindcss-animate": "^1.0.7",
 		"tw-elements": "^2.0.0"
 	},
 	"devDependencies": {
@@ -33,6 +47,7 @@
 		"postcss": "^8",
 		"prisma": "^5.15.1",
 		"tailwindcss": "^3.4.1",
+		"ts-node": "^10.9.2",
 		"typescript": "^5"
 	}
 }

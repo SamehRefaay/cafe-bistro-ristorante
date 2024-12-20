@@ -5,7 +5,8 @@ import { CategoryType } from '@/types/types';
 import { UrlConfig } from '@/lib/Constants';
 
 const getMenuCategory = async () => {
-	const res = await fetch(`${UrlConfig}/api/categories`, {
+	console.log(UrlConfig.url);
+	const res = await fetch(`${UrlConfig.url}/api/categories`, {
 		cache: 'no-store',
 	});
 

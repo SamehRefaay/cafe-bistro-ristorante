@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+	body {
+		@apply font-secondary text-base text-secondary;
+	}
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6 {
+		@apply text-primary;
+	}
+	.h1 {
+		@apply font-primary text-[45px] xl:text-[90px] leading-none;
+	}
+	.h2 {
+		@apply text-[36px] tracking-[-0.02em] leading-[44px] font-semibold;
+	}
+	.h3 {
+		@apply text-[20px] font-semibold;
+	}
+	.lead {
+		@apply text-xl;
+	}
+	.btn {
+		@apply rounded-lg h-12 py-3 px-5;
+	}
+	.btn-accent {
+		@apply bg-accent hover:bg-accent-hover text-white;
+	}
+	.slider-btn {
+		@apply bg-black hover:bg-accent-hover text-white w-[48px] h-[48px] flex justify-center items-center rounded-full transition-all duration-300;
+	}
+}

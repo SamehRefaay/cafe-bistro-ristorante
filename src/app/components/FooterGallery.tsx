@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { gallery } from '../../lib/data';
+import { galleryPhotos } from '../../lib/data';
 
 const FooterGallery = () => {
-	const data = gallery;
+	const data = galleryPhotos;
 	return (
 		<div className="flex flex-col gap-5">
 			<h3 className="font-poppins font-medium text-lg uppercase">Gallery</h3>

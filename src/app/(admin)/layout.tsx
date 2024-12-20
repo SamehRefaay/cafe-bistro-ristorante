@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
 import '@/app/styles/globals.css';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Header';
 import Footer from '../components/Footer';
 import { Providers } from '../components/Providers';
 

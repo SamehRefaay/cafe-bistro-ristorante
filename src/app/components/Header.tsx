@@ -1,4 +1,5 @@
 'use client';
+import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
@@ -42,7 +43,7 @@ const links = [
 	},
 ];
 
-const Navbar = () => {
+const Header = () => {
 	const [headerBackground, setHeaderBackground] = useState<boolean>();
 
 	const listenScrollEvent = (event: any) => {
@@ -63,7 +64,7 @@ const Navbar = () => {
 
 	return (
 		<div
-			className={`lg:sticky relative px-4 top-0 left-0 z-10 w-full border-t-8 border-primary-red ${
+			className={`lg:sticky relative px-4 top-0 left-0 z-50 w-full border-t-8 border-accent ${
 				headerBackground ? 'lg:bg-[#e7e7e7] md:bg-opacity-85' : 'bg-transparent'
 			} `}
 		>
@@ -116,10 +117,13 @@ const Navbar = () => {
 
 				{/* desktop menu button */}
 				<div
-					className={`hidden md:block hover:text-primary-red ${
+					className={`hidden md:flex gap-5 hover:text-primary-red ${
 						headerBackground ? 'text-black' : 'text-white'
 					}`}
 				>
+					<Button as={Link} color="primary" href="/auth/signup" variant="flat">
+						Sign Up
+					</Button>
 					<HiOutlineMenuAlt4 size={25} className="font-thin" />
 				</div>
 
@@ -155,4 +159,4 @@ const Navbar = () => {
 	);
 };
 
-export default Navbar;
+export default Header;

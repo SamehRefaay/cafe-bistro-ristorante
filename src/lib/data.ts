@@ -55,44 +55,68 @@ export const galleryData = [
 	},
 ];
 
-// export const menuCategories = [
-// 	{
-// 		id: '001',
-// 		title: 'Launch',
-// 		href: '/menu/#launch',
-// 		image: '/our-menu-01.jpg.webp',
-// 	},
-// 	{
-// 		id: '002',
-// 		title: 'Dinner',
-// 		href: '/menu/#dinner',
-// 		image: '/our-menu-02.jpg.webp',
-// 	},
-// 	{
-// 		id: '003',
-// 		title: 'Drink',
-// 		href: '/menu/#drink',
-// 		image: '/our-menu-03.jpg.webp',
-// 	},
-// 	{
-// 		id: '004',
-// 		title: 'Starters',
-// 		href: '/menu/#starters',
-// 		image: '/our-menu-04.jpg.webp',
-// 	},
-// 	{
-// 		id: '005',
-// 		title: 'Happy Hour',
-// 		href: '/menu/#happy-hour',
-// 		image: '/our-menu-05.jpg.webp',
-// 	},
-// 	{
-// 		id: '006',
-// 		title: 'Desert',
-// 		href: '/menu/#desert',
-// 		image: '/our-menu-06.jpg.webp',
-// 	},
-// ];
+export const galleryPhotos = [
+	{
+		id: '01',
+		title: 'gallery-01',
+		image: '/photo-gallery-01.jpg.webp',
+	},
+	{
+		id: '02',
+		title: 'gallery-02',
+		image: '/photo-gallery-02.jpg.webp',
+	},
+	{
+		id: '03',
+		title: 'gallery-03',
+		image: '/photo-gallery-03.jpg.webp',
+	},
+	{
+		id: '04',
+		title: 'gallery-04',
+		image: '/photo-gallery-04.jpg.webp',
+	},
+	{
+		id: '05',
+		title: 'gallery-05',
+		image: '/photo-gallery-05.jpg.webp',
+	},
+	{
+		id: '06',
+		title: 'gallery-06',
+		image: '/photo-gallery-06.jpg.webp',
+	},
+	{
+		id: '07',
+		title: 'gallery-07',
+		image: '/photo-gallery-07.jpg.webp',
+	},
+	{
+		id: '08',
+		title: 'gallery-08',
+		image: '/photo-gallery-08.jpg.webp',
+	},
+	{
+		id: '09',
+		title: 'gallery-09',
+		image: '/photo-gallery-09.jpg.webp',
+	},
+	{
+		id: '10',
+		title: 'gallery-10',
+		image: '/photo-gallery-10.jpg.webp',
+	},
+	{
+		id: '11',
+		title: 'gallery-11',
+		image: '/photo-gallery-11.jpg.webp',
+	},
+	{
+		id: '12',
+		title: 'gallery-12',
+		image: '/photo-gallery-12.jpg.webp',
+	},
+];
 
 export const events = [
 	{
@@ -175,78 +199,94 @@ export const news = [
 	},
 ];
 
-export const gallery = [
+export const productCategories = [
 	{
 		id: '001',
 		title: 'Launch',
+		slug: 'launch',
 		href: '/menu/#launch',
 		image: '/photo-gallery-01.jpg.webp',
 	},
 	{
 		id: '002',
 		title: 'Dinner',
+		slug: 'dinner',
 		href: '/menu/#dinner',
 		image: '/photo-gallery-02.jpg.webp',
 	},
 	{
 		id: '003',
 		title: 'Drink',
+		slug: 'drink',
 		href: '/menu/#drink',
 		image: '/photo-gallery-03.jpg.webp',
 	},
 	{
 		id: '004',
 		title: 'Starters',
+		slug: 'starters',
 		href: '/menu/#starters',
 		image: '/photo-gallery-04.jpg.webp',
 	},
 	{
 		id: '005',
 		title: 'Happy Hour',
-		href: '/menu/#happy-hour',
+		slug: 'main',
+		href: '/menu/#main',
 		image: '/photo-gallery-05.jpg.webp',
 	},
 	{
 		id: '006',
-		title: 'Desert',
-		href: '/menu/#desert',
+		title: 'Dessert',
+		slug: 'dessert',
+		href: '/menu/#dessert',
 		image: '/photo-gallery-06.jpg.webp',
 	},
+];
+
+export const products = [
 	{
-		id: '007',
-		title: 'Desert',
-		href: '/menu/#desert',
-		image: '/photo-gallery-07.jpg.webp',
+		title: 'product 01',
+		desc: 'desc product 01',
+		cateSlug: 'dessert',
+		image: '/photo-gallery-06.jpg.webp',
+		price: 20,
 	},
 	{
-		id: '008',
-		title: 'Desert',
-		href: '/menu/#desert',
-		image: '/photo-gallery-08.jpg.webp',
+		title: 'product 02',
+		desc: 'desc product 01',
+		cateSlug: 'main',
+		image: '/photo-gallery-06.jpg.webp',
+		price: 20,
 	},
 	{
-		id: '009',
-		title: 'Desert',
-		href: '/menu/#desert',
-		image: '/photo-gallery-09.jpg.webp',
+		title: 'product 03',
+		desc: 'desc product 01',
+		cateSlug: 'starter',
+		image: '/photo-gallery-06.jpg.webp',
+		price: 20,
 	},
 	{
-		id: '010',
-		title: 'Desert',
-		href: '/menu/#desert',
-		image: '/photo-gallery-10.jpg.webp',
+		title: 'product 04',
+		desc: 'desc product 01',
+		cateSlug: 'launch',
+		image: '/photo-gallery-06.jpg.webp',
+		price: 20,
 	},
 	{
-		id: '011',
-		title: 'Desert',
-		href: '/menu/#desert',
-		image: '/photo-gallery-11.jpg.webp',
+		title: 'product 05',
+		desc: 'desc product 01',
+		cateSlug: 'drink',
+		image: '/photo-gallery-06.jpg.webp',
+		price: 20,
 	},
+
 	{
-		id: '012',
-		title: 'Desert',
-		href: '/menu/#desert',
-		image: '/photo-gallery-12.jpg.webp',
+		title: 'product 06',
+		desc: 'desc product 06',
+		cateSlug: 'dinner',
+		image: '/photo-gallery-06.jpg.webp',
+		price: 60,
 	},
 ];
 

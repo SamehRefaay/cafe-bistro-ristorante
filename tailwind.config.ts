@@ -1,8 +1,6 @@
 import { nextui } from '@nextui-org/react';
 import type { Config } from 'tailwindcss';
 
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 const config: Config = {
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,20 +8,34 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
 	],
-	// safelist: ['animate-[fade-in-down_1s_ease-in-out]'],
 	theme: {
+		container: {
+			center: true,
+			padding: '16px',
+		},
+		screens: {
+			sm: '640px',
+			md: '768px',
+			lg: '1024px',
+			xl: '1200px',
+		},
+		fontFamily: {
+			primary: 'var(--font-montserrat)',
+			secondary: 'var(--font-inter)',
+		},
 		extend: {
 			colors: {
-				// 'primary-red': '#ec1d25',
-				'primary-red': '#d61c22',
-				'primary-gray': '#ececec',
-				'gray-pattern-1': '#eeeeee',
-				'primary-gray-dark': '#333333',
+				primary: '#111111',
+				secondary: '#919999',
+				accent: {
+					DEFAULT: '#d61c22',
+					hover: '#c0191e',
+				},
 			},
-			fontFamily: {
-				courgette: ['Courgette', ...defaultTheme.fontFamily.sans],
-				poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
-			},
+			// fontFamily: {
+			// 	courgette: ['Courgette', ...defaultTheme.fontFamily.sans],
+			// 	poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+			// },
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic':
@@ -120,6 +132,10 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [require('tw-elements/plugin.cjs'), nextui()],
+	plugins: [
+		require('tailwindcss-animate'),
+		require('tw-elements/plugin.cjs'),
+		nextui(),
+	],
 };
 export default config;
