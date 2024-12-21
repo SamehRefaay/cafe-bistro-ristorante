@@ -2,10 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer {
+:root {
+	--swiper-pagination-top: var(--swiper-pagination-top);
+	--swiper-pagination-bottom: 50px;
+	--swiper-pagination-color: #d61c22;
+	--swiper-pagination-bullet-size: 14px;
+	--swiper-pagination-bullet-width: 14px;
+	--swiper-pagination-bullet-height: 14px;
+	--swiper-pagination-bullet-inactive-color: #919999;
+	--swiper-pagination-bullet-inactive-opacity: 0.5;
+	--swiper-pagination-bullet-opacity: 1;
+	--swiper-pagination-bullet-horizontal-gap: 4px;
+	--swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+@layer base {
 	body {
 		@apply font-secondary text-base text-secondary;
 	}
+
 	.h1,
 	.h2,
 	.h3,
@@ -14,6 +29,7 @@
 	.h6 {
 		@apply text-primary;
 	}
+
 	.h1 {
 		@apply font-primary text-[45px] xl:text-[90px] leading-none;
 	}
@@ -29,10 +45,11 @@
 	.btn {
 		@apply rounded-lg h-12 py-3 px-5;
 	}
+
 	.btn-accent {
 		@apply bg-accent hover:bg-accent-hover text-white;
 	}
-	.slider-btn {
-		@apply bg-black hover:bg-accent-hover text-white w-[48px] h-[48px] flex justify-center items-center rounded-full transition-all duration-300;
+	.btn-slider {
+		@apply bg-black/50 hover:bg-accent-hover/50 text-white flex justify-center items-center rounded-full;
 	}
 }

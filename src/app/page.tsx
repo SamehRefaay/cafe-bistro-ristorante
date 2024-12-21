@@ -13,12 +13,7 @@
 import Hero from './components/Hero';
 
 export default function Home() {
-	const slides = [
-		{ id: '001', src: '/slide1-01.jpg.webp', alt: 'slide-1' },
-		{ id: '002', src: '/master-slides-01.jpg.webp', alt: 'slide-2' },
-		{ id: '003', src: '/master-slides-02.jpg.webp', alt: 'slide-3' },
-	];
-
+	
 	return (
 		<main className="-mt-[96px] w-full flex flex-col">
 			<Hero />

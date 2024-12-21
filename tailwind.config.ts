@@ -20,8 +20,9 @@ const config: Config = {
 			xl: '1200px',
 		},
 		fontFamily: {
-			primary: 'var(--font-montserrat)',
-			secondary: 'var(--font-inter)',
+			primary: 'var(--font-poppins)',
+			secondary: 'var(--font-montserrat)',
+			accent: 'var(--font-courgette)',
 		},
 		extend: {
 			colors: {
@@ -58,10 +59,16 @@ const config: Config = {
 				SlideRight: 'slide 1s ease-in-out',
 				fadeInUp: 'fadeInUp 1s ease-in-out',
 				fadeInDown: 'fadeInDown 1s ease-in-out',
-				fadeInMoveDown: 'fadeInMoveDown 1s ease-in-out',
+				FadeInMoveDown: 'FadeInMoveDown 1s ease-in-out',
 				fadeInRight: 'fadeInRight 1s ease-in-out',
+				flashing: 'flash 0.7s ',
 			},
 			keyframes: {
+				flash: {
+					'0%': { opacity: '1' },
+					'40%': { opacity: '1' },
+					'100%': { opacity: '0', width: '200%', height: '200%' },
+				},
 				FadeIn: {
 					from: { opacity: '0.7' },
 					to: { opacity: '1' },
@@ -89,10 +96,10 @@ const config: Config = {
 						transform: 'translateX(-50%) translateY(-50%)',
 					},
 				},
-				fadeInMoveDown: {
+				FadeInMoveDown: {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(20px)',
+						transform: '-translateY(20px)',
 					},
 
 					'100%': {

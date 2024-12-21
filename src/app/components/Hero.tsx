@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import CustomParagraph from './CustomParagraph';
 
 // import swiper component
@@ -7,10 +7,31 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // import swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+
 // import swiper moduels
 import 'swiper/modules';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+const slides = [
+	{
+		id: crypto.randomUUID(),
+		src: '/hero/slide-1.webp',
+		contentAnimation: ['SlideRight', 'fadeInUp', 'fadeInDown'],
+	},
+	{
+		id: crypto.randomUUID(),
+		src: '/hero/slide-2.webp',
+		contentAnimation: ['fadeIn', 'scaleUp', 'rotate360'],
+	},
+	{
+		id: crypto.randomUUID(),
+		src: '/hero/slide-3.webp',
+		contentAnimation: ['fadeInUp', 'fadeInDown', 'SlideRight'],
+	},
+];
 
 const Hero = () => {
 	const [swiperRef, setSwiperRef] = useState<any>(null);
@@ -30,38 +51,57 @@ const Hero = () => {
 			{/* image slider */}
 			<Swiper
 				slidesPerView={1}
-				spaceBetween={50}
+				spaceBetween={0}
 				loop={true}
-				// breakpoints={{
-				// 	640: { slidesPerView: 1 },
-				// 	768: { slidesPerView: 2 },
-				// 	1024: { slidesPerView: 3 },
-				// 	1280: { slidesPerView: 4 },
-				// }}
 				onSwiper={setSwiperRef}
 				onSlideChange={swiper => setActiveSlide(swiper.realIndex)}
-				modules={[Autoplay]}
+				modules={[Autoplay, Pagination]}
+				pagination={{ clickable: true }}
 				autoplay={{ delay: 3000, disableOnInteraction: false }}
+				effect="fade"
 				className="w-full h-[400px] xl:h-screen"
 			>
-				<SwiperSlide className="w-full h-full bg-red-400">1</SwiperSlide>
-				<SwiperSlide className="w-full h-full bg-green-400">2</SwiperSlide>
-				<SwiperSlide className="w-full h-full bg-blue-400">3</SwiperSlide>
-				<SwiperSlide className="w-full h-full bg-yellow-400">4</SwiperSlide>
+				{slides.map(slide => (
+					<SwiperSlide key={slide.id}>
+						{
+							<div className="relative overflow-hidden w-full h-full group">
+								<div className="w-0 h-0 bg-white/20 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 animate-flashing"></div>
+								<Image src={slide.src} alt="" fill className="object-cover" />
+								<div className="w-[600px] h-[200px] bg-black absolute top-1/2 left-1/2 bg-red z-10 -translate-x-1/2 -translate-y-1/2">
+									<motion.div
+										initial={{ opacity: 0, y: -150 }}
+										animate={{ opacity: 1, y: 0 }}
+										className=""
+									>
+										welcome to
+									</motion.div>
+									<h1 className={`animate-${slide.contentAnimation}`}>
+										Bistro Resturant
+									</h1>
+									<button className={`animate-${slide.contentAnimation}`}>
+										Look Menu
+									</button>
+								</div>
+							</div>
+						}
+					</SwiperSlide>
+				))}
 			</Swiper>
 			{/* slider buttons */}
 			<div className="w-full px-4 md:px-8 lg:px-16 xl:px-32 mx-auto absolute left-0 top-[200px] xl:top-[50vh] z-10 flex items-center justify-between">
 				<button
 					onClick={handlePrevious}
-					className="text-2xl bg-black hover:bg-accent-hover text-white w-[48px] h-[48px] flex justify-center items-center rounded-full"
+					className="w-[48px] h-[48px] btn-slider text-2xl"
 				>
 					<FiArrowLeft />
 				</button>
-				<button onClick={handleNext} className="slider-btn text-2xl">
+				<button
+					onClick={handleNext}
+					className="w-[48px] h-[48px] btn-slider text-2xl"
+				>
 					<FiArrowRight />
 				</button>
 			</div>
-
 			<div>
 				<CustomParagraph
 					firstTitle="Italian Restaurant"
@@ -70,7 +110,11 @@ const Hero = () => {
 					image="/our-story-01.jpg.webp"
 				/>
 			</div>
-			<div className="container mx-auto h-[400px] bg-black"></div>
+			<div className="container mx-auto bg-black">
+				<div className="w-[200px] h-[200px] relative group overflow-hidden">
+					<Image src="/avatar-01.webp" alt="" fill className="object-cover" />
+				</div>
+			</div>
 		</section>
 	);
 };

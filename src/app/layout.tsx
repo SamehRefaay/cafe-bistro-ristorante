@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { Inter, Montserrat } from 'next/font/google';
-import './globals.css';
-import Navbar from './components/Header';
+import { Courgette, Montserrat, Poppins } from 'next/font/google';
+import Navbar from './components/header/Header';
 import Footer from './components/Footer';
 import { Providers } from './components/Providers';
+import './globals.css';
 
-const inter = Inter({
+const montserrat = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 	subsets: ['latin'],
-	variable: '--font-inter',
+	variable: '--font-montserrat',
 });
-const montserrat = Montserrat({
+
+const poppins = Poppins({
+	weight: ['400', '500', '600', '700'],
+	subsets: ['latin'],
+	variable: '--font-poppins',
+});
+
+const courgette = Courgette({
 	weight: ['400'],
 	subsets: ['latin'],
-	variable: '--font-montserrat',
+	variable: '--font-courgette',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +35,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`antialiased ${inter.variable} ${montserrat.variable}`}>
+			<body
+				className={`antialiased ${montserrat.variable} ${poppins.variable}`}
+			>
 				<Providers>
 					{/* Header */}
 					<Navbar />
