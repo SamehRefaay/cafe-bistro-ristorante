@@ -62,7 +62,7 @@ const CustomSlide = ({ titles, images, children }: Props) => {
 			<div className="w-full h-screen">
 				{images && (
 					<Image
-						className={`duration-[4000] ${
+						className={`duration-1000 ${
 							slideAnimation ? 'animate-fadeIn' : ''
 						}`}
 						src={images[slide]?.src}

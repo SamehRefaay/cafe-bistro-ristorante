@@ -13,22 +13,26 @@ import 'swiper/modules';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { easeIn, easeInOut, motion } from 'framer-motion';
 
 const slides = [
 	{
 		id: crypto.randomUUID(),
 		src: '/hero/slide-1.webp',
+		contentText: ['welcome to', 'bistro place'],
 		contentAnimation: ['SlideRight', 'fadeInUp', 'fadeInDown'],
 	},
 	{
 		id: crypto.randomUUID(),
 		src: '/hero/slide-2.webp',
+		contentText: ['welcome to', 'bistro resturant '],
 		contentAnimation: ['fadeIn', 'scaleUp', 'rotate360'],
 	},
 	{
 		id: crypto.randomUUID(),
 		src: '/hero/slide-3.webp',
+		contentText: ['enjoy your time in', 'bistro cafe'],
+
 		contentAnimation: ['fadeInUp', 'fadeInDown', 'SlideRight'],
 	},
 ];
@@ -63,27 +67,37 @@ const Hero = () => {
 			>
 				{slides.map(slide => (
 					<SwiperSlide key={slide.id}>
-						{
+						{({ isActive }) => (
 							<div className="relative overflow-hidden w-full h-full group">
 								<div className="w-0 h-0 bg-white/20 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 animate-flashing"></div>
 								<Image src={slide.src} alt="" fill className="object-cover" />
-								<div className="w-[600px] h-[200px] bg-black absolute top-1/2 left-1/2 bg-red z-10 -translate-x-1/2 -translate-y-1/2">
+								<div className="absolute top-1/2 left-1/2 bg-red z-10 -translate-x-1/2 -translate-y-1/2 flex gap-5 xl:gap-10 flex-col justify-center">
 									<motion.div
-										initial={{ opacity: 0, y: -150 }}
+										initial={{ opacity: 0, y: -999 }}
 										animate={{ opacity: 1, y: 0 }}
-										className=""
+										transition={{ duration: 1 }}
+										className="text-2xl xl:text-5xl font-accent text-white text-center"
 									>
-										welcome to
+										{slide.contentText[0]}
 									</motion.div>
-									<h1 className={`animate-${slide.contentAnimation}`}>
-										Bistro Resturant
-									</h1>
-									<button className={`animate-${slide.contentAnimation}`}>
+									<motion.h1 className="uppercase text-3xl xl:text-6xl tracking-widest font-bold font-primary text-white text-center">
+										{slide.contentText[1]}
+									</motion.h1>
+									<motion.button
+										initial={{ opacity: 0, y: 9999 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{
+											duration: 1,
+											delay: 0.5,
+											easings: ['easeOut'],
+										}}
+										className="w-max mx-auto btn bg-white uppercase text-accent text-base xl:text-lg"
+									>
 										Look Menu
-									</button>
+									</motion.button>
 								</div>
 							</div>
-						}
+						)}
 					</SwiperSlide>
 				))}
 			</Swiper>
@@ -101,19 +115,6 @@ const Hero = () => {
 				>
 					<FiArrowRight />
 				</button>
-			</div>
-			<div>
-				<CustomParagraph
-					firstTitle="Italian Restaurant"
-					secondTitle="WELCOME"
-					text="Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia, nisl ante egestas mi, ac facilisis ligula sem id neque."
-					image="/our-story-01.jpg.webp"
-				/>
-			</div>
-			<div className="container mx-auto bg-black">
-				<div className="w-[200px] h-[200px] relative group overflow-hidden">
-					<Image src="/avatar-01.webp" alt="" fill className="object-cover" />
-				</div>
 			</div>
 		</section>
 	);

@@ -98,7 +98,8 @@ const config: Config = {
 				},
 				FadeInMoveDown: {
 					'0%': {
-						opacity: '0',
+						top: '0',
+
 						transform: '-translateY(20px)',
 					},
 

@@ -5,7 +5,6 @@ import CustomLink from './CustomLink';
 
 interface Props {
 	item: {
-		id: string;
 		title: string;
 		desc: string;
 		image: string;

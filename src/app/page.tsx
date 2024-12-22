@@ -11,15 +11,17 @@
 // import CustomParagraph from '../components/CustomParagraph';
 // components
 import Hero from './components/Hero';
+import AboutUs from './components/AboutUs';
+import Discover from './components/Discover';
+import Features from './components/Features';
 
 export default function Home() {
-	
 	return (
 		<main className="-mt-[96px] w-full flex flex-col">
 			<Hero />
-			{/* <Slider images={slides} /> */}
-			{/* <Discover /> */}
-			{/* <Features /> */}
+			<AboutUs />
+			<Discover />
+			<Features />
 			{/* <OurMenu /> */}
 			{/* <Events /> */}
 			{/* <Reservation /> */}

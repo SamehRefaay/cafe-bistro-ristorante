@@ -11,7 +11,7 @@ const CustomTitle = ({
 }) => {
 	return (
 		<div className="flex flex-col justify-center items-center gap-5">
-			<h3 className="font-courgette text-xl md:text-2xl lg:text-3xl leading-5 text-primary-red ">
+			<h3 className="font-accent text-xl md:text-2xl lg:text-3xl leading-5 text-accent ">
 				{firstTitle}
 			</h3>
 			<h2

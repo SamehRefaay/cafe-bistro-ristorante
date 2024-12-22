@@ -36,7 +36,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`antialiased ${montserrat.variable} ${poppins.variable}`}
+				className={`antialiased ${montserrat.variable} ${poppins.variable} ${courgette.variable}`}
 			>
 				<Providers>
 					{/* Header */}
