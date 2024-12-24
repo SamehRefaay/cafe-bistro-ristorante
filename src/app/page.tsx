@@ -14,6 +14,7 @@ import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Discover from './components/Discover';
 import Features from './components/Features';
+import OurMenu from './components/OurMenu';
 
 export default function Home() {
 	return (
@@ -22,7 +23,7 @@ export default function Home() {
 			<AboutUs />
 			<Discover />
 			<Features />
-			{/* <OurMenu /> */}
+			<OurMenu />
 			{/* <Events /> */}
 			{/* <Reservation /> */}
 			{/* <Review /> */}

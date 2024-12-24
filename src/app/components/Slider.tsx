@@ -58,7 +58,7 @@ const Slider = ({ images }: Props) => {
 		<div className="w-full h-screen">
 			<div className="relative left-0 w-full h-screen">
 				<Image
-					className={`duration-[4000] object-cover ${
+					className={`duration-1000 object-cover ${
 						slideAnimation ? 'animate-fadeIn' : ''
 					}`}
 					src={images[slide]?.src}

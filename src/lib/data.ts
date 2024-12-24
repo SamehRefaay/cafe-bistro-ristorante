@@ -1,24 +1,3 @@
-export const features = [
-	{
-		id: '001',
-		title: 'Romantic Restaurant',
-		desc: 'Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.',
-		image: '/intro-01.jpg.webp',
-	},
-	{
-		id: '002',
-		title: 'Delicious Food',
-		desc: 'Duis elementum, risus sit amet lobortis nunc justo condimentum ligula, vitae feugiat',
-		image: '/intro-02.jpg.webp',
-	},
-	{
-		id: '003',
-		title: 'Red Wines you love',
-		desc: 'Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
-		image: '/intro-03.jpg.webp',
-	},
-];
-
 export const galleryData = [
 	{
 		id: '013',

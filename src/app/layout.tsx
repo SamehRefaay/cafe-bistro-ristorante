@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Courgette, Montserrat, Poppins } from 'next/font/google';
+import { Providers } from './components/Providers';
+// componetes
 import Navbar from './components/header/Header';
 import Footer from './components/Footer';
-import { Providers } from './components/Providers';
+// globals style
 import './globals.css';
 
 const montserrat = Montserrat({
