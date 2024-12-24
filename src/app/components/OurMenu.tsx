@@ -72,19 +72,19 @@ const categories: MenuCategroey[] = [
 
 const OurMenu = async () => {
 	return (
-		<section className="w-full px-4 lg:px-0 bg-[#f5f2ec] py-32">
-			<div className="max-w-7xl mx-auto">
+		<section className="w-full py-20 bg-[#f5f2ec]">
+			<div className="container mx-auto">
 				<CustomTitle firstTitle="Discover" secondTitle="Our Menu" variant={1} />
-				<div className="mt-20 grid gap-2 md:gap-3 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3">
+				<div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4">
 					{categories.map((item, index) => (
 						<div
 							key={item.id}
-							className={`w-full ${
+							className={`min-h-[200px] ${
 								index === 0 || index === 1
-									? 'col-span-1 row-span-1 h-[250px] lg:row-span-2 lg:h-[516px]'
+									? 'lg:row-span-2'
 									: index === 4
 									? 'lg:col-span-2'
-									: 'h-[250px] col-span-1 row-span-1'
+									: ''
 							}`}
 						>
 							<MenuTypeItem
@@ -101,3 +101,11 @@ const OurMenu = async () => {
 };
 
 export default OurMenu;
+{
+	/* <div className="bg-gray-300 row-span-2">1</div>
+<div className="bg-gray-300 row-span-2">2</div>
+ <div className="h-[200px]">3</div>
+<div className="bg-gray-300 col-start-3 row-start-2">4</div>
+<div className="bg-gray-300 col-span-2 row-start-3">5</div>
+<div className="bg-gray-300 col-start-3 row-start-3">6</div> */
+}

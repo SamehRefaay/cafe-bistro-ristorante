@@ -17,14 +17,13 @@ interface Props {
 
 const FeaturesItem = ({ item, link }: Props) => {
 	return (
-		<div className="w-full flex flex-col gap-10">
-			<div className="overflow-hidden rounded-lg">
+		<div className="w-full h-full flex flex-col gap-10">
+			<div className="w-full h-[250px] relative overflow-hidden rounded-lg">
 				<Image
-					className="transition-all duration-500 hover:scale-110"
+					className="object-cover transition-all duration-500 hover:scale-110"
 					src={item?.image}
 					alt="feature image"
-					width={600}
-					height={600}
+					fill
 				/>
 			</div>
 			<div className="w-full flex flex-col text-left gap-5">

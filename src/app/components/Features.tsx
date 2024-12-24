@@ -23,15 +23,18 @@ const Features = () => {
 		},
 	];
 	return (
-		<section className="w-full px-4 lg:px-0">
-			<div className="max-w-7xl mx-auto py-20 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-				{features.map(item => (
-					<FeaturesItem
-						key={item.id}
-						item={item}
-						link={{ title: 'Learn More', url: `/features/${item.id}` }}
-					/>
-				))}
+		<section className="w-full py-20">
+			<div className="container mx-auto">
+				<div className="w-full grid gap-10 grid-cols-1 lg:grid-cols-3 ">
+					{features.map(item => (
+						<div key={item.id} className="w-full h-max">
+							<FeaturesItem
+								item={item}
+								link={{ title: 'Learn More', url: `/features/${item.id}` }}
+							/>
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 	);

@@ -101,20 +101,25 @@ const Hero = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
+
 			{/* slider buttons */}
-			<div className="w-full px-4 md:px-8 lg:px-16 xl:px-32 mx-auto absolute left-0 top-[200px] xl:top-[50vh] z-10 flex items-center justify-between">
-				<button
-					onClick={handlePrevious}
-					className="w-[48px] h-[48px] btn-slider text-2xl"
-				>
-					<FiArrowLeft />
-				</button>
-				<button
-					onClick={handleNext}
-					className="w-[48px] h-[48px] btn-slider text-2xl"
-				>
-					<FiArrowRight />
-				</button>
+			<div className="w-full px-4 md:px-8 lg:px-16 xl:px-32 mx-auto absolute left-0 top-[200px] xl:top-[50vh] z-10">
+				<div className="container mx-auto">
+					<div className="flex items-center justify-between">
+						<button
+							onClick={handlePrevious}
+							className="w-[48px] h-[48px] btn-slider text-2xl"
+						>
+							<FiArrowLeft />
+						</button>
+						<button
+							onClick={handleNext}
+							className="w-[48px] h-[48px] btn-slider text-2xl"
+						>
+							<FiArrowRight />
+						</button>
+					</div>
+				</div>
 			</div>
 		</section>
 	);
