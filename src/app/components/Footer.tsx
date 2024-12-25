@@ -1,6 +1,6 @@
 'use client';
 import Copyright from './Copyright';
-import Social from './Social';
+import MainFooter from './MainFooter';
 import Subscribe from './Subscribe';
 
 const Footer = () => {
@@ -8,8 +8,8 @@ const Footer = () => {
 		<footer className="w-full">
 			{/* subscribe */}
 			<Subscribe />
-			{/* social links */}
-			<Social />
+			{/* main content of footer include openning times & social links & gallery */}
+			<MainFooter />
 			{/* copyright */}
 			<Copyright />
 		</footer>

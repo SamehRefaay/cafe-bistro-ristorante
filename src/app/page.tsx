@@ -12,6 +12,9 @@ import Features from './components/Features';
 import OurMenu from './components/OurMenu';
 import Events from './components/Events';
 import Reservation from './components/Reservation';
+import Review from './components/Review';
+import OurVideo from './components/OurVideo';
+import Blog from './components/BLog';
 
 export default function Home() {
 	return (
@@ -23,9 +26,9 @@ export default function Home() {
 			<OurMenu />
 			<Events />
 			<Reservation />
-			{/* <Review /> */}
-			{/* <OurVideo /> */}
-			{/* <Blog /> */}
+			<Review />
+			<OurVideo />
+			<Blog />
 		</main>
 	);
 }

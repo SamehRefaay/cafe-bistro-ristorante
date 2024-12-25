@@ -16,7 +16,7 @@ const Review = () => {
 						variant={1}
 					/>
 				</div>
-				<div className="w-full">
+				<div className="container mx-auto">
 					<SimpleSlider items={reviews} />
 				</div>
 			</div>

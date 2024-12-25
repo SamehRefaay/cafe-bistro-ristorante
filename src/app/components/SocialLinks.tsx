@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
-const SocialLinks = ({ background = false }: { background: boolean }) => {
+const SocialLinks = ({ background }: { background: boolean }) => {
 	return (
 		<div className="flex gap-4 items center">
 			<Link href="#">
