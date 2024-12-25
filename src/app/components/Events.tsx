@@ -61,7 +61,7 @@ const Events = () => {
 
 	return (
 		<section className="w-full relative">
-			<div className="absolute left-1/2 top-10 -translate-x-1/2 z-10">
+			<div className="absolute top-10 lg:top-20 left-1/2 -translate-x-1/2 z-10">
 				<CustomTitle firstTitle="Upcomming" secondTitle="Events" variant={2} />
 			</div>
 			<Swiper
@@ -80,13 +80,13 @@ const Events = () => {
 					<SwiperSlide key={item?.id}>
 						{/* slider background image */}
 						<div className="relative w-full h-screen">
-							<div className="w-0 h-0 bg-white/20 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 animate-flashing"></div>
+							<div className="w-0 h-0 bg-white/20 absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 animate-flashing"></div>
 							<Image src={item?.slideBg} alt="" fill />
 						</div>
 						{/* slider content event item */}
-						<div className="w-full max-h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 ">
-							<div className="container px-16 lg:px-32 mx-auto">
-								<div className="h-[400px] lg:h-[300px]">
+						<div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+							<div className="container p-20 mx-auto">
+								<div className="h-full lg:h-[300px]">
 									<EventItem event={item?.event} />
 								</div>
 							</div>
@@ -95,7 +95,7 @@ const Events = () => {
 				))}
 			</Swiper>
 			{/* slider buttons */}
-			<div className="w-full absolute left-0 top-1/2 -translate-y-1/2 z-10">
+			<div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
 				<div className="container mx-auto">
 					<div className="w-full flex items-center justify-between">
 						<button
