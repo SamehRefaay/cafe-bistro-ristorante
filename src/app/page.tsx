@@ -1,10 +1,3 @@
-// import Reservation from '../components/Reservation';
-// import Review from '../components/Review';
-// import Slider from '../components/Slider';
-// import OurVideo from '../components/OurVideo';
-// import Blog from '../components/BLog';
-// import CustomParagraph from '../components/CustomParagraph';
-// components
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Discover from './components/Discover';

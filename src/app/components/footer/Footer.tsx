@@ -1,7 +1,7 @@
 'use client';
-import Copyright from './Copyright';
-import MainFooter from './MainFooter';
-import Subscribe from './Subscribe';
+import Copyright from './_components/Copyright';
+import MainFooter from './_components/MainFooter';
+import Subscribe from './_components/Subscribe';
 
 const Footer = () => {
 	return (

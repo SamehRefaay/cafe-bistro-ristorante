@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomButton from './CustomButton';
+import CustomButton from '../../CustomButton';
 import { IoMdMail } from 'react-icons/io';
 
 const Subscribe = () => {
