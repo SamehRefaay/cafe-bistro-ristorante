@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import CustomTitle from './CustomTitle';
 import 'tw-elements';
-import { title } from 'process';
 
 interface Image {
 	id: string;

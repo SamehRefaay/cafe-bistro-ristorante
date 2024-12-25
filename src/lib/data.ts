@@ -97,30 +97,6 @@ export const galleryPhotos = [
 	},
 ];
 
-export const events = [
-	{
-		id: '0001',
-		title: 'Wine During Specific Nights',
-		desc: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
-		datetime: '2024-06-12T20:00:00.419Z',
-		image: '/event-01.jpg.webp',
-	},
-	{
-		id: '0002',
-		title: 'Wine During Specific Nights',
-		desc: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
-		datetime: '2024-06-12T20:00:00.419Z',
-		image: '/event-02.jpg.webp',
-	},
-	{
-		id: '0003',
-		title: 'Wine During Specific Nights',
-		desc: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...',
-		datetime: '2024-06-12T20:00:00.419Z',
-		image: '/event-03.jpg.webp',
-	},
-];
-
 export const reviews = [
 	{
 		id: '001',
@@ -175,51 +151,6 @@ export const news = [
 		title: 'STYLE THE WEDDING PARTY',
 		desc: 'Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
 		image: '/blog-03.jpg.webp',
-	},
-];
-
-export const productCategories = [
-	{
-		id: '001',
-		title: 'Launch',
-		slug: 'launch',
-		href: '/menu/#launch',
-		image: '/photo-gallery-01.jpg.webp',
-	},
-	{
-		id: '002',
-		title: 'Dinner',
-		slug: 'dinner',
-		href: '/menu/#dinner',
-		image: '/photo-gallery-02.jpg.webp',
-	},
-	{
-		id: '003',
-		title: 'Drink',
-		slug: 'drink',
-		href: '/menu/#drink',
-		image: '/photo-gallery-03.jpg.webp',
-	},
-	{
-		id: '004',
-		title: 'Starters',
-		slug: 'starters',
-		href: '/menu/#starters',
-		image: '/photo-gallery-04.jpg.webp',
-	},
-	{
-		id: '005',
-		title: 'Happy Hour',
-		slug: 'main',
-		href: '/menu/#main',
-		image: '/photo-gallery-05.jpg.webp',
-	},
-	{
-		id: '006',
-		title: 'Dessert',
-		slug: 'dessert',
-		href: '/menu/#dessert',
-		image: '/photo-gallery-06.jpg.webp',
 	},
 ];
 

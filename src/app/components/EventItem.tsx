@@ -6,36 +6,38 @@ import CountDown from './CountDown';
 interface Props {
 	event: {
 		title: string;
-		desc: string;
+		description: string;
 		datetime: string;
 		image: string;
 	};
-	className: string;
 }
 
-const EventItem = ({ event, className }: Props) => {
+const EventItem = ({ event }: Props) => {
 	return (
-		<div className={`${className} flex`}>
-			<div className="relative w-12 rounded-l-lg bg-primary-red text-white ">
-				<p className="absolute top-1/2 -left-1/2 -rotate-90 ">
-					{event?.datetime}
-				</p>
+		<div className="w-full h-full flex flex-col lg:flex-row">
+			{/* event image & event date & time  */}
+			<div className="w-full h-full pt-[60px] lg:py-0 lg:pl-[70px] rounded-tl-lg rounded-tr-lg lg:rounded-tr-none lg:rounded-bl-lg bg-accent">
+				<div className="relative w-full h-[300px] ">
+					<p className="absolute -top-[40px] left-1/2 -translate-x-1/2 lg:top-1/2 lg:-left-[40px] text-[16px] text-white lg:-rotate-90 z-10 ">
+						{/* {event?.datetime} */}
+						24 November 2018
+					</p>
+					<Image
+						className="w-full h-full object-cover"
+						src={event.image}
+						alt=""
+						priority
+						fill
+					/>
+				</div>
 			</div>
-			<div className="flex-1 h-full">
-				<Image
-					className="w-full h-full object-cover"
-					src={event?.image}
-					alt="event image"
-					width={800}
-					height={300}
-				/>
-			</div>
-			<div className="flex-1 flex flex-col gap-5 text-center justify-center items-center bg-white rounded-r-lg">
+			{/* event details title & description */}
+			<div className="w-full p-4 flex flex-col gap-5 text-center justify-center items-center bg-white  rounded-b-lg  lg:rounded-bl-none lg:rounded-tr-lg">
 				<h1 className="text-[22px] font-poppins font-medium text-[#222] leading-5 uppercase">
 					{event?.title}
 				</h1>
 				<p className="text-[15px] text-[#666] max-w-md leading-7 font-normal">
-					{event?.desc}
+					{event?.description}
 				</p>
 				<CountDown />
 				<CustomLink title="View Details" href="#" alignment="center" />

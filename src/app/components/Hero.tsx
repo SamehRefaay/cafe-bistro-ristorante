@@ -1,6 +1,5 @@
 'use client';
 import React, { useCallback, useEffect, useState } from 'react';
-import CustomParagraph from './CustomParagraph';
 
 // import swiper component
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -101,9 +100,8 @@ const Hero = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-
 			{/* slider buttons */}
-			<div className="w-full px-4 md:px-8 lg:px-16 xl:px-32 mx-auto absolute left-0 top-[200px] xl:top-[50vh] z-10">
+			<div className="w-full absolute left-0 top-[200px] xl:top-[50vh] z-10">
 				<div className="container mx-auto">
 					<div className="flex items-center justify-between">
 						<button
