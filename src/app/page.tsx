@@ -11,6 +11,7 @@ import Discover from './components/Discover';
 import Features from './components/Features';
 import OurMenu from './components/OurMenu';
 import Events from './components/Events';
+import Reservation from './components/Reservation';
 
 export default function Home() {
 	return (
@@ -21,7 +22,7 @@ export default function Home() {
 			<Features />
 			<OurMenu />
 			<Events />
-			{/* <Reservation /> */}
+			<Reservation />
 			{/* <Review /> */}
 			{/* <OurVideo /> */}
 			{/* <Blog /> */}
