@@ -1,11 +1,7 @@
-import AdminControl from '@/app/components/AdminControl';
-import React from 'react';
-
+// components
 const Dashboard = () => {
 	return (
-		<div>
-			<AdminControl />
-		</div>
+		<main className="w-full h-screen flex gap-4 text-white">Main content</main>
 	);
 };
 

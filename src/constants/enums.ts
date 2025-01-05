@@ -8,4 +8,11 @@ export enum Routes {
 	CONTACT = 'contact',
 	AUTH = 'auth',
 	CART = 'cart',
+	DASHBOARD = 'dashboard',
+	ALLPRODUCTS = 'product/list',
+	ADDPRODUCT = 'product/add',
+	EDITPRODUCT = 'product/edit',
+	USERPROFILE = 'user/profile',
+	ADDUSER = 'user/add',
+	USERLIST = 'user/list',
 }

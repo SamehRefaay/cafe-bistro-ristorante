@@ -1,75 +1,71 @@
 generator client {
-    provider = "prisma-client-js"
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "windows"]
 }
 
 datasource db {
-    provider  = "postgresql"
-    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-}
-
-model Category {
-    id        String    @id @default(cuid())
-    createdAt DateTime  @default(now())
-    title     String
-    images    String[]
-    slug      String    @unique
-    products  Product[]
-}
-
-model Product {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    title     String
-    desc      String
-    image     String?
-    price     Decimal
-    options   Json[]
-    category  Category @relation(fields: [cateSlug], references: [slug])
-    cateSlug  String
-}
-
-model Account {
-    id                 String    @id @default(cuid())
-    userId             String
-    providerType       String
-    providerId         String
-    providerAccountId  String
-    refreshToken       String?
-    accessToken        String?
-    accessTokenExpires DateTime?
-    createdAt          DateTime  @default(now())
-    updatedAt          DateTime  @updatedAt
-    user               User      @relation(fields: [userId], references: [id])
-
-    @@unique([providerId, providerAccountId])
-}
-
-model Session {
-    id           String   @id @default(cuid())
-    userId       String
-    expires      DateTime
-    sessionToken String   @unique
-    accessToken  String   @unique
-    createdAt    DateTime @default(now())
-    updatedAt    DateTime @updatedAt
-    user         User     @relation(fields: [userId], references: [id])
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-    id            String    @id @default(cuid())
-    firstName     String
-    lastName      String
-    password      String
-    email         String    @unique
-    emailVerified DateTime?
-    phone         String
-    image         String?
-    createdAt     DateTime  @default(now())
-    updatedAt     DateTime  @updatedAt
-    accounts      Account[]
-    sessions      Session[]
+    id        String   @id
+    firstName String
+    lastName  String
+    password  String?
+    email     String
+    avatarUrl String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
+
+// model Category {
+//     id        String    @id @default(cuid())
+//     createdAt DateTime  @default(now())
+//     title     String
+//     images    String[]
+//     slug      String    @unique
+//     products  Product[]
+// }
+
+// model Product {
+//     id        String   @id @default(cuid())
+//     createdAt DateTime @default(now())
+//     title     String
+//     desc      String
+//     image     String?
+//     price     Decimal
+//     options   Json[]
+//     category  Category @relation(fields: [cateSlug], references: [slug])
+//     cateSlug  String
+// }
+
+// model Account {
+//     id                 String    @id @default(cuid())
+//     userId             String
+//     providerType       String
+//     providerId         String
+//     providerAccountId  String
+//     refreshToken       String?
+//     accessToken        String?
+//     accessTokenExpires DateTime?
+//     createdAt          DateTime  @default(now())
+//     updatedAt          DateTime  @updatedAt
+//     user               User      @relation(fields: [userId], references: [id])
+
+//     @@unique([providerId, providerAccountId])
+// }
+
+// model Session {
+//     id           String   @id @default(cuid())
+//     userId       String
+//     expires      DateTime
+//     sessionToken String   @unique
+//     accessToken  String   @unique
+//     createdAt    DateTime @default(now())
+//     updatedAt    DateTime @updatedAt
+//     user         User     @relation(fields: [userId], references: [id])
+// }
 
 model VerificationRequest {
     id         String   @id @default(cuid())

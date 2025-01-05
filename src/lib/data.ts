@@ -34,69 +34,6 @@ export const galleryData = [
 	},
 ];
 
-export const galleryPhotos = [
-	{
-		id: '01',
-		title: 'gallery-01',
-		image: '/photo-gallery-01.jpg.webp',
-	},
-	{
-		id: '02',
-		title: 'gallery-02',
-		image: '/photo-gallery-02.jpg.webp',
-	},
-	{
-		id: '03',
-		title: 'gallery-03',
-		image: '/photo-gallery-03.jpg.webp',
-	},
-	{
-		id: '04',
-		title: 'gallery-04',
-		image: '/photo-gallery-04.jpg.webp',
-	},
-	{
-		id: '05',
-		title: 'gallery-05',
-		image: '/photo-gallery-05.jpg.webp',
-	},
-	{
-		id: '06',
-		title: 'gallery-06',
-		image: '/photo-gallery-06.jpg.webp',
-	},
-	{
-		id: '07',
-		title: 'gallery-07',
-		image: '/photo-gallery-07.jpg.webp',
-	},
-	{
-		id: '08',
-		title: 'gallery-08',
-		image: '/photo-gallery-08.jpg.webp',
-	},
-	{
-		id: '09',
-		title: 'gallery-09',
-		image: '/photo-gallery-09.jpg.webp',
-	},
-	{
-		id: '10',
-		title: 'gallery-10',
-		image: '/photo-gallery-10.jpg.webp',
-	},
-	{
-		id: '11',
-		title: 'gallery-11',
-		image: '/photo-gallery-11.jpg.webp',
-	},
-	{
-		id: '12',
-		title: 'gallery-12',
-		image: '/photo-gallery-12.jpg.webp',
-	},
-];
-
 export const reviews = [
 	{
 		id: '001',
