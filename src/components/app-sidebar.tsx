@@ -13,17 +13,12 @@ import {
 	SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
 import { Routes } from '@/constants/enums';
-import { Home, Settings } from 'lucide-react';
+import { Home, HomeIcon, Settings } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 import Link from 'next/link';
+import Logo from '@/app/components/Logo';
 
 const items = [
-	{
-		id: crypto.randomUUID(),
-		title: 'Dashboard',
-		url: Routes.DASHBOARD,
-		icon: Home,
-	},
 	{
 		id: crypto.randomUUID(),
 		title: 'Product',
@@ -80,8 +75,10 @@ const items = [
 
 export function AppSidebar() {
 	return (
-		<Sidebar collapsible='icon'>
-			<SidebarHeader />
+		<Sidebar collapsible='offcanvas'>
+			<SidebarHeader className='w-full flex justify-center items-center'>
+				<Logo background={false} />
+			</SidebarHeader>
 			<SidebarContent>
 				<SidebarGroup />
 				<SidebarGroupLabel>Application</SidebarGroupLabel>

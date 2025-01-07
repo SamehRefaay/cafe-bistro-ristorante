@@ -42,8 +42,7 @@ export const reviews = [
 			image: '/avatar-01.jpg.webp',
 			address: 'New York',
 		},
-		review:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
+		review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
 		rating: 5,
 	},
 	{
@@ -53,8 +52,7 @@ export const reviews = [
 			image: '/avatar-04.jpg.webp',
 			address: 'New York',
 		},
-		review:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
+		review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
 		rating: 5,
 	},
 	{
@@ -64,8 +62,7 @@ export const reviews = [
 			image: '/avatar-05.jpg.webp',
 			address: 'New York',
 		},
-		review:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
+		review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea dolorem distinctio ducimus eos ad sapiente',
 		rating: 5,
 	},
 ];
@@ -143,24 +140,21 @@ export const chefData = [
 		image: '/avatar-02.jpg.webp',
 		name: 'Peter Hart',
 		position: 'chef',
-		about:
-			'Donec porta eleifend mauris ut effici-tur. Quisque non velit vestibulum, lob-ortis mi eget, rhoncus nunc',
+		about: 'Donec porta eleifend mauris ut effici-tur. Quisque non velit vestibulum, lob-ortis mi eget, rhoncus nunc',
 	},
 	{
 		id: '02',
 		image: '/avatar-03.jpg.webp',
 		name: 'Joyce Bowman',
 		position: 'chef',
-		about:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultricies felis a sem tempus tempus.',
+		about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultricies felis a sem tempus tempus.',
 	},
 	{
 		id: '03',
 		image: '/avatar-05.jpg.webp',
 		name: 'Peter Hart',
 		position: 'chef',
-		about:
-			'Phasellus aliquam libero a nisi varius, vitae placerat sem aliquet. Ut at velit nec ipsum iaculis posuere quis in sapien',
+		about: 'Phasellus aliquam libero a nisi varius, vitae placerat sem aliquet. Ut at iaculis posuere quis in sapien.',
 	},
 ];
 
