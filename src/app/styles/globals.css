@@ -53,7 +53,7 @@
 		@apply bg-black/50 hover:bg-accent-hover/50 text-white flex justify-center items-center rounded-full;
 	}
 	:root {
-		--sidebar-background: 358, 77%, 47%; /*accent color */
+		--sidebar-background:240 5.3% 98.1% /*358, 77%, 47%; accent color */
 		--sidebar-foreground: 240 5.3% 98.1%; /*white*/
 		--sidebar-primary: 240 5.9% 10%;
 		--sidebar-primary-foreground: 0 0% 98%;

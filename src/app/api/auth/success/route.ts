@@ -37,6 +37,5 @@ export async function GET() {
 	// for prod env homepage will be https://cafe-bistro-ristorante.vercel.app/
 	const homePage =
 		process.env.NODE_ENV === 'production' ? 'https://cafe-bistro-restorante.vercel.app/' : 'http://localhost:3000';
-
 	return NextResponse.redirect(homePage);
 }

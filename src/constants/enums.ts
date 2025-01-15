@@ -1,4 +1,5 @@
 export enum Routes {
+	// public routes
 	ROOT = '/',
 	MENU = 'menu',
 	RESERVATION = 'reservation',
@@ -8,10 +9,16 @@ export enum Routes {
 	CONTACT = 'contact',
 	AUTH = 'auth',
 	CART = 'cart',
+	// admin routes
 	DASHBOARD = 'dashboard',
-	ALLPRODUCTS = 'product/list',
-	ADDPRODUCT = 'product/add',
-	EDITPRODUCT = 'product/edit',
+	MENUS = 'menus',
+	CATALOGUE = 'catalogue',
+	PRODUCTLIST = 'list',
+	PRODUCTGRID = 'grid',
+	PRODUCTDETAIL = 'detail',
+	ADDPRODUCT = 'addProduct',
+	EDITPRODUCT = 'editProduct',
+
 	USERPROFILE = 'user/profile',
 	ADDUSER = 'user/add',
 	USERLIST = 'user/list',

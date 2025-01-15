@@ -43,7 +43,9 @@ const Header = ({ children }: Props) => {
 					} `}
 				>
 					{/* logo */}
-					<Logo background={headerBackground} />
+					<div className='w-[100px] h-auto'>
+						<Logo background={headerBackground} />
+					</div>
 					{/* navbar */}
 					<Navbar background={headerBackground} />
 					{/* signin Pannel & social links */}

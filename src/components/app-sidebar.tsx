@@ -19,29 +19,42 @@ import Link from 'next/link';
 import Logo from '@/app/components/Logo';
 
 const items = [
+	// Menus
 	{
 		id: crypto.randomUUID(),
-		title: 'Product',
+		title: 'Menus',
 		url: '',
 		icon: Settings,
 		subMenuItems: [
 			{
 				id: crypto.randomUUID(),
-				title: 'All Products',
+				title: 'Menu Catalogue',
 				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.ALLPRODUCTS}`,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.CATALOGUE}`,
+			},
+			{
+				id: crypto.randomUUID(),
+				title: 'Menu List',
+				icon: Home,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTLIST}`,
+			},
+			{
+				id: crypto.randomUUID(),
+				title: 'Menu Grid',
+				icon: Home,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTGRID}`,
 			},
 			{
 				id: crypto.randomUUID(),
 				title: 'Add Product',
 				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.ADDPRODUCT}`,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.ADDPRODUCT}`,
 			},
 			{
 				id: crypto.randomUUID(),
-				title: 'Edit Product',
+				title: 'Product Detail',
 				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.EDITPRODUCT}`,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTDETAIL}`,
 			},
 		],
 	},
@@ -76,29 +89,12 @@ const items = [
 export function AppSidebar() {
 	return (
 		<Sidebar collapsible='offcanvas'>
-			<SidebarHeader className='w-full flex justify-center items-center'>
+			<SidebarHeader className='w-full h-[220px] flex justify-center items-center bg-accent'>
 				<Logo background={false} />
 			</SidebarHeader>
 			<SidebarContent>
-				<SidebarGroup />
-				<SidebarGroupLabel>Application</SidebarGroupLabel>
-				<SidebarGroupContent>
-					<SidebarMenu>
-						{items.map((item) => (
-							<SidebarMenuItem key={item.title}>
-								<SidebarMenuButton asChild>
-									<a href={item.url}>
-										<item.icon />
-										<span>{item.title}</span>
-									</a>
-								</SidebarMenuButton>
-							</SidebarMenuItem>
-						))}
-					</SidebarMenu>
-				</SidebarGroupContent>
-				<SidebarGroup />
 				<SidebarGroup>
-					<SidebarGroupLabel>collapsible menu</SidebarGroupLabel>
+					<SidebarGroupLabel></SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu>
 							{items.map((item) => (
@@ -106,6 +102,7 @@ export function AppSidebar() {
 									<SidebarMenuItem>
 										<CollapsibleTrigger asChild>
 											<SidebarMenuButton>
+												<item.icon />
 												<Link href={item.url}>{item.title}</Link>
 											</SidebarMenuButton>
 										</CollapsibleTrigger>

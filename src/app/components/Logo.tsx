@@ -1,16 +1,17 @@
 import { Routes } from '@/constants/enums';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Logo = ({ background = false }: { background: boolean }) => {
 	return (
-		<Link
-			href={Routes.ROOT}
-			className={`border-[3px] ${
-				background ? 'border-accent text-accent' : 'border-white text-white'
-			}  text-start py-1 px-2 rounded-lg w-max uppercase`}
-		>
-			<h1 className="text-lg lg:text-2xl font-semibold lg:font-bold">Bistro</h1>
-			<p className="-mt-2 text-[10px] lg:text-sm">Restaurant</p>
+		<Link className='w-full h-full' href={Routes.ROOT}>
+			<div className={`w-full h-full `}>
+				{background ? (
+					<Image src='/logo/logo-accent.png' alt='logo' className='object-cover' width={200} height={200} />
+				) : (
+					<Image src='/logo/logo-white.png' alt='logo' className='object-cover' width={200} height={200} />
+				)}
+			</div>
 		</Link>
 	);
 };

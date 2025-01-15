@@ -16,7 +16,6 @@ const UsersListPage = async () => {
 							<TableHead>First Name</TableHead>
 							<TableHead>Last Name</TableHead>
 							<TableHead className='text-right'>Email</TableHead>
-							<TableHead className='text-right'>Password</TableHead>
 							<TableHead className='text-right'>Created At</TableHead>
 							<TableHead className='text-right'>Updated At</TableHead>
 						</TableRow>
@@ -28,7 +27,6 @@ const UsersListPage = async () => {
 								<TableCell>{user.firstName}</TableCell>
 								<TableCell>{user.lastName}</TableCell>
 								<TableCell className='text-right'>{user.email}</TableCell>
-								<TableCell className='text-right'>{user.password}</TableCell>
 								<TableCell className='text-right'>{user.createdAt.toISOString()}</TableCell>
 								<TableCell className='text-right'>{user.updatedAt.toISOString()}</TableCell>
 							</TableRow>
