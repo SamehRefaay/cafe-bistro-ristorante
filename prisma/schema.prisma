@@ -37,27 +37,6 @@ model ProductCategory {
     products    Product[]
 }
 
-// model Category {
-//     id        String    @id @default(cuid())
-//     createdAt DateTime  @default(now())
-//     title     String
-//     images    String[]
-//     slug      String    @unique
-//     products  Product[]
-// }
-
-// model Product {
-//     id        String   @id @default(cuid())
-//     createdAt DateTime @default(now())
-//     title     String
-//     desc      String
-//     image     String?
-//     price     Decimal
-//     options   Json[]
-//     category  Category @relation(fields: [cateSlug], references: [slug])
-//     cateSlug  String
-// }
-
 // model Account {
 //     id                 String    @id @default(cuid())
 //     userId             String

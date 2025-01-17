@@ -25,83 +25,71 @@ const ReservationForm = ({ col, ordered }: Props) => {
 		{ value: 12, title: '12 people' },
 	];
 	return (
-		<form className="w-full mt-16">
-			<div
-				className={`grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 ${
-					col === 3 ? 'md:grid-cols-3' : ''
-				}`}
-			>
+		<form className='w-full mt-16'>
+			<div className={`grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 ${col === 3 ? 'md:grid-cols-3' : ''}`}>
 				{/* Date */}
-				<div className="order-1 flex flex-col gap-2">
-					<label htmlFor="date" className="text-sm text-[#666]">
+				<div className='order-1 flex flex-col gap-2'>
+					<label htmlFor='date' className='text-sm text-[#666]'>
 						Date
 					</label>
 					<input
-						id="date"
-						className="w-full border p-3 rounded-lg focus:outline-primary-red text-[#999] text-sm"
-						type="date"
-						name="date"
+						id='date'
+						className='w-full border p-3 rounded-lg focus:outline-accent text-[#999] text-sm'
+						type='date'
+						name='date'
 						value={date}
 						onChange={(e: any) => setDate(e.target.value)}
 					/>
 				</div>
 				{/* Name */}
-				<div
-					className={`${ordered ? 'order-4' : 'order-2'} flex flex-col gap-2`}
-				>
-					<label htmlFor="name" className="text-sm text-[#666]">
+				<div className={`${ordered ? 'order-4' : 'order-2'} flex flex-col gap-2`}>
+					<label htmlFor='name' className='text-sm text-[#666]'>
 						Name
 					</label>
 					<input
-						id="name"
-						className="w-full border p-3 rounded-lg focus:outline-primary-red text-[#999] text-sm"
-						type="name"
-						name="name"
-						placeholder="Name"
+						id='name'
+						className='w-full border p-3 rounded-lg focus:outline-accent text-[#999] text-sm'
+						type='name'
+						name='name'
+						placeholder='Name'
 					/>
 				</div>
 				{/* Time */}
-				<div
-					className={`${ordered ? 'order-2' : 'order-3'} flex flex-col gap-2`}
-				>
-					<label htmlFor="time" className="text-sm text-[#666]">
+				<div className={`${ordered ? 'order-2' : 'order-3'} flex flex-col gap-2`}>
+					<label htmlFor='time' className='text-sm text-[#666]'>
 						Time
 					</label>
 					<input
-						className="w-full border p-3 rounded-lg focus:outline-primary-red text-[#999] text-sm"
-						id="time"
-						type="time"
-						name="time"
+						className='w-full border p-3 rounded-lg focus:outline-accent text-[#999] text-sm'
+						id='time'
+						type='time'
+						name='time'
 					/>
 				</div>
 				{/* Phone */}
-				<div
-					className={`${ordered ? 'order-5' : 'order-4'} flex flex-col gap-2`}
-				>
-					<label htmlFor="phone" className="text-sm text-[#666]">
+				<div className={`${ordered ? 'order-5' : 'order-4'} flex flex-col gap-2`}>
+					<label htmlFor='phone' className='text-sm text-[#666]'>
 						Phone
 					</label>
 					<input
-						className="w-full border p-3 rounded-lg focus:outline-primary-red text-[#999] text-sm"
-						id="phone"
-						type="text"
-						name="phone"
-						placeholder="Phone"
+						className='w-full border p-3 rounded-lg focus:outline-accent text-[#999] text-sm'
+						id='phone'
+						type='text'
+						name='phone'
+						placeholder='Phone'
 					/>
 				</div>
 				{/* People */}
-				<div
-					className={`${ordered ? 'order-3' : 'order-5'} flex flex-col gap-2`}
-				>
-					<label htmlFor="people" className="text-sm text-[#666]">
+				<div className={`${ordered ? 'order-3' : 'order-5'} flex flex-col gap-2`}>
+					<label htmlFor='people' className='text-sm text-[#666]'>
 						People
 					</label>
 					<select
-						className="w-full border p-3 rounded-lg bg-white focus:outline-primary-red text-[#999] text-sm"
-						id="people"
-						name="people"
+						className='w-full border p-3 rounded-lg bg-white focus:outline-accent text-[#999] text-sm'
+						id='people'
+						name='people'
 					>
-						{options.map(item => (
+						{options.map((item) => (
 							<option key={item.value} value={item.value}>
 								{item.title}
 							</option>
@@ -109,16 +97,16 @@ const ReservationForm = ({ col, ordered }: Props) => {
 					</select>
 				</div>
 				{/* Email */}
-				<div className="order-6 flex flex-col gap-2">
-					<label htmlFor="email" className="text-sm text-[#666]">
+				<div className='order-6 flex flex-col gap-2'>
+					<label htmlFor='email' className='text-sm text-[#666]'>
 						Email
 					</label>
 					<input
-						className="w-full border p-3 rounded-lg focus:outline-primary-red text-[#999] text-sm"
-						id="email"
-						type="email"
-						name="email"
-						placeholder="Email"
+						className='w-full border p-3 rounded-lg focus:outline-accent text-[#999] text-sm'
+						id='email'
+						type='email'
+						name='email'
+						placeholder='Email'
 					/>
 				</div>
 				{/* submit button */}
@@ -127,12 +115,7 @@ const ReservationForm = ({ col, ordered }: Props) => {
 						col === 3 ? 'lg:col-span-3' : ''
 					}  flex flex-col gap-2`}
 				>
-					<CustomButton
-						className=""
-						type="submit"
-						title="Book Table"
-						variant={2}
-					/>
+					<CustomButton className='' type='submit' title='Book Table' variant={2} />
 				</div>
 			</div>
 		</form>

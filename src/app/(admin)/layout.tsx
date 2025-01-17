@@ -5,11 +5,12 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 // globals styles
 import '../styles/globals.css';
-import Header from '../components/header/Header';
 import AdminHeader from '../components/header/AdminHeader';
-import SignInPannel from '../components/header/SignInPannel';
 import RightPannel from '../components/right-pannel/RightPannel';
 import AdminAvatar from '../components/header/AdminAvatar';
+import MinNav from '../components/Navs/MinNav';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const montserrat = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -44,7 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<AdminHeader>
 							<AdminAvatar />
 						</AdminHeader>
+						<MinNav />
 						{children}
+						<ToastContainer />
 					</main>
 					<RightPannel />
 				</SidebarProvider>

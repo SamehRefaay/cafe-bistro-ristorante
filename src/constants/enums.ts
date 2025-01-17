@@ -15,9 +15,9 @@ export enum Routes {
 	CATALOGUE = 'catalogue',
 	PRODUCTLIST = 'list',
 	PRODUCTGRID = 'grid',
-	PRODUCTDETAIL = 'detail',
-	ADDPRODUCT = 'addProduct',
-	EDITPRODUCT = 'editProduct',
+	PRODUCTDETAIL = 'product-detail',
+	ADDPRODUCT = 'add-product',
+	EDITPRODUCT = 'edit-product',
 
 	USERPROFILE = 'user/profile',
 	ADDUSER = 'user/add',
