@@ -7,7 +7,8 @@ const MinNav = () => {
 		.replace('/dashboard', 'Home')
 		.replace('addProduct', 'Add Product')
 		.toUpperCase()
-		.split('/');
+		.split('/')
+		.slice(0, 3);
 	return (
 		<div className='w-full py-5'>
 			<div className='container'>

@@ -13,7 +13,7 @@ export enum Routes {
 	DASHBOARD = 'dashboard',
 	MENUS = 'menus',
 	CATALOGUE = 'catalogue',
-	PRODUCTLIST = 'list',
+	PRODUCTLIST = 'menu-list',
 	PRODUCTGRID = 'grid',
 	PRODUCTDETAIL = 'product-detail',
 	ADDPRODUCT = 'add-product',

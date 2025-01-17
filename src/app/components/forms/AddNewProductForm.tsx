@@ -17,6 +17,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FileInput from '@/app/components/forms/FileUpload';
 import { Routes } from '@/constants/enums';
+import { revalidatePath } from 'next/cache';
+import { Loader2 } from 'lucide-react';
 type Currency = {
 	id: string;
 	name: string;
@@ -41,6 +43,7 @@ interface AddNewProductFormProps {
 
 const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewProductFormProps) => {
 	const [productImage, setProductImage] = useState<File | null>(null);
+	const [loading, setLoading] = useState(false);
 	const router = useRouter();
 
 	const form = useForm<z.infer<typeof AddProductFormSchema>>({
@@ -53,19 +56,17 @@ const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewPro
 		resolver: zodResolver(AddProductFormSchema),
 	});
 
-	console.log('image:', productImage);
-	console.log('image name:', productImage?.name);
-
-	// const { register, handleSubmit, formState } = form;
-
 	const onSubmit = async (data: z.infer<typeof AddProductFormSchema>) => {
 		const url = await uploadProductImage(productImage!);
 		try {
 			if (isEdit) {
 				console.log('handle edit product');
 			} else {
+				setLoading(true);
 				await saveProduct(data, url);
+				setLoading(false);
 				toast.success('Property added successfully!');
+				revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTLIST}`);
 			}
 		} catch (error) {
 			console.error({ 'some thing went wrong': error });
@@ -78,7 +79,6 @@ const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewPro
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit, (errors) => console.log(errors))}
-				// className='w-full grid grid-cols-2 gap-4'
 				className='w-full grid grid-cols-2 gap-4'
 			>
 				{/* Product Name */}
@@ -177,9 +177,16 @@ const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewPro
 					)}
 				/>
 
-				<Button type='submit' className='col-span-2'>
-					Save
-				</Button>
+				{loading ? (
+					<Button disabled>
+						<Loader2 className='animate-spin' />
+						Please wait
+					</Button>
+				) : (
+					<Button type='submit' className='col-span-2'>
+						Save
+					</Button>
+				)}
 			</form>
 		</Form>
 	);
