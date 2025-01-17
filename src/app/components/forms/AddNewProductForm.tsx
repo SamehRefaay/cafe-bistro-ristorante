@@ -15,7 +15,8 @@ import { useRouter } from 'next/navigation';
 import { saveProduct } from '@/lib/actions/product';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import FileInput from '@/app/components/forms/FileUpload';
+import { Routes } from '@/constants/enums';
 type Currency = {
 	id: string;
 	name: string;
@@ -52,6 +53,9 @@ const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewPro
 		resolver: zodResolver(AddProductFormSchema),
 	});
 
+	console.log('image:', productImage);
+	console.log('image name:', productImage?.name);
+
 	// const { register, handleSubmit, formState } = form;
 
 	const onSubmit = async (data: z.infer<typeof AddProductFormSchema>) => {
@@ -66,7 +70,7 @@ const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewPro
 		} catch (error) {
 			console.error({ 'some thing went wrong': error });
 		} finally {
-			router.push('/user/properties');
+			router.push(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTLIST}`);
 		}
 	};
 
@@ -162,12 +166,9 @@ const AddNewProductForm = ({ isEdit = false, categories, currencies }: AddNewPro
 						<FormItem className='col-span-2'>
 							<FormLabel>Product Image</FormLabel>
 							<FormControl>
-								<Input
+								<FileInput
 									type='file'
-									placeholder='Upload Images...'
-									onSelect={(e: React.ChangeEvent<HTMLInputElement>) =>
-										setProductImage(e.target.files?.[0] || null)
-									}
+									onSelect={(e: any) => setProductImage(e.target.files?.[0] || null)}
 								/>
 							</FormControl>
 							<FormDescription>This is the product image.</FormDescription>
