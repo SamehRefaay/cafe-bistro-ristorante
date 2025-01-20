@@ -13,18 +13,33 @@ import {
 	SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
 import { Routes } from '@/constants/enums';
-import { Home, HomeIcon, Settings } from 'lucide-react';
+import { Home, HomeIcon, Menu, Settings, User } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 import Link from 'next/link';
 import Logo from '@/app/components/Logo';
 
 const items = [
+	//Dashboard
+	{
+		id: crypto.randomUUID(),
+		title: 'Dashboard',
+		url: '',
+		icon: Home,
+		subMenuItems: [
+			{
+				id: crypto.randomUUID(),
+				title: 'Bistro Restaurant',
+				icon: Home,
+				url: `/${Routes.DASHBOARD}`,
+			},
+		],
+	},
 	// Menus
 	{
 		id: crypto.randomUUID(),
 		title: 'Menus',
 		url: '',
-		icon: Settings,
+		icon: Menu,
 		subMenuItems: [
 			{
 				id: crypto.randomUUID(),
@@ -36,32 +51,26 @@ const items = [
 				id: crypto.randomUUID(),
 				title: 'Menu List',
 				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTLIST}`,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`,
 			},
 			{
 				id: crypto.randomUUID(),
 				title: 'Menu Grid',
 				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTGRID}`,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_GRID}`,
 			},
 			{
 				id: crypto.randomUUID(),
 				title: 'Add Product',
 				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.ADDPRODUCT}`,
-			},
-			{
-				id: crypto.randomUUID(),
-				title: 'Product Detail',
-				icon: Home,
-				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTDETAIL}`,
+				url: `/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.ADD_PRODUCT}`,
 			},
 		],
 	},
 	{
 		id: crypto.randomUUID(),
 		title: 'Users',
-		icon: Home,
+		icon: User,
 		url: '',
 		subMenuItems: [
 			{

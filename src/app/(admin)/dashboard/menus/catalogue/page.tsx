@@ -50,7 +50,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 			</CardContent>
 			<CardFooter>
 				<Button asChild className='w-full'>
-					<Link href={`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCTDETAIL}/${product.id}`}>
+					<Link href={`/${Routes.DASHBOARD}/${Routes.MENUS}/${product.id}/${Routes.PRODUCT_DETAIL}`}>
 						See More
 					</Link>
 				</Button>

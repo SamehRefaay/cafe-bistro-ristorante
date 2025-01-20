@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className={`antialiased ${montserrat.variable} ${poppins.variable} ${courgette.variable}`}>
 				<SidebarProvider>
 					<AppSidebar />
-					<main className='w-full'>
+					<main className='w-full bg-secondary/10'>
 						<AdminHeader>
 							<AdminAvatar />
 						</AdminHeader>
