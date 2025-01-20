@@ -1,7 +1,6 @@
 import { Courgette, Montserrat, Poppins } from 'next/font/google';
 // import sidebar form shadcn ui
-import SideBar from '../components/sidebar/SideBar';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 // globals styles
 import '../styles/globals.css';

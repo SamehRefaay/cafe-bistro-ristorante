@@ -13,7 +13,7 @@ import {
 	SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
 import { Routes } from '@/constants/enums';
-import { Home, HomeIcon, Menu, Settings, User } from 'lucide-react';
+import { Home, Menu, User } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 import Link from 'next/link';
 import Logo from '@/app/components/Logo';
