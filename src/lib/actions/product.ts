@@ -4,6 +4,18 @@ import { z } from 'zod';
 import { AddProductFormSchema } from '../zodSchema';
 import { prisma } from '@/utils/client';
 import { FormValues } from '@/app/components/forms/AddNewProductForm';
+import { revalidatePath } from 'next/cache';
+import { productListPath } from '@/app/(admin)/dashboard/menus/[id]/details/@modalDelete/(..)delete/page';
+
+//get product by id
+export async function getProductById(productId: number) {
+	try {
+		const product = await prisma.product.findUnique({ where: { id: productId } });
+		return product;
+	} catch (error) {
+		console.error(error);
+	}
+}
 
 //add new product
 export async function saveProduct(data: z.infer<typeof AddProductFormSchema>, url: string) {
@@ -52,6 +64,8 @@ export async function deleteProduct(productId: number) {
 				id: productId,
 			},
 		});
+		//data mutation
+		revalidatePath(productListPath);
 		return result;
 	} catch (error) {
 		console.error(error);

@@ -3,12 +3,10 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator';
 import { Routes } from '@/constants/enums';
 import { prisma } from '@/utils/client';
-import { Product } from '@prisma/client';
 import { SpeakerIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaMicrophone, FaMicrophoneAlt } from 'react-icons/fa';
-import { FaHeart, FaSpeakap, FaSpeakerDeck } from 'react-icons/fa6';
+import { FaHeart } from 'react-icons/fa6';
 
 const page = async ({ params }: { params: { id: string } }) => {
 	const { id } = params;
@@ -82,11 +80,10 @@ const ProductInfoCard = ({ product }: { product: any }) => {
 				<Button asChild className='w-full h-full py-3 bg-primary hover:bg-primary/80'>
 					<Link href={`/${Routes.DASHBOARD}/${Routes.MENUS}/${product.id}/${Routes.EDIT_PRODUCT}`}>Edit</Link>
 				</Button>
-				<Button
-					className='w-full h-full py-3 bg-accent hover:bg-accent-hover
-                '
-				>
-					Delete
+				<Button asChild className='w-full h-full py-3 bg-accent hover:bg-accent-hover'>
+					<Link href={`/${Routes.DASHBOARD}/${Routes.MENUS}/${product.id}/${Routes.DELETE_PRODUCT}`}>
+						Delete
+					</Link>
 				</Button>
 			</CardFooter>
 		</Card>

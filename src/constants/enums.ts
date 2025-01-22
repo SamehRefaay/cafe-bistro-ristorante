@@ -18,6 +18,7 @@ export enum Routes {
 	PRODUCT_DETAIL = 'details',
 	ADD_PRODUCT = 'add',
 	EDIT_PRODUCT = 'edit',
+	DELETE_PRODUCT = 'delete',
 
 	USERPROFILE = 'user/profile',
 	ADDUSER = 'user/add',
