@@ -72,7 +72,7 @@ const ProductInfoCard = ({ product }: { product: any }) => {
 			<CardContent>
 				<Attribute title='Price' value={product.price} />
 				<Attribute title='Product Category' value={product?.category.name} />
-				<Attribute title='Availiblity' value='In stock' highLightedValue={true} />
+				<Attribute title='Availiblity' value={product?.available} highLightedValue={true} />
 				<Attribute title='Delivery Charges' value={'free'} />
 				<Attribute title='SKU Identification' value={product.id} />
 			</CardContent>
@@ -121,15 +121,21 @@ const Attribute = ({
 	highLightedValue = false,
 }: {
 	title: string;
-	value: string;
+	value: any;
 	highLightedValue?: boolean;
 }) => {
 	return (
 		<div className='w-full py-3 flex justify-between items-center border-t-1'>
 			<span className='text-primary font-bold text-[18px]'>{title}</span>
-			<span className={`capitalize ${highLightedValue ? 'px-1 rounded-md bg-accent text-white' : ''}`}>
-				{value}
-			</span>
+			{highLightedValue ? <StockText available={value} /> : <span>{value}</span>}
 		</div>
+	);
+};
+
+export const StockText = ({ available }: { available: boolean }) => {
+	return available ? (
+		<span className='px-1 rounded-md bg-green-500 text-white'>In Stock</span>
+	) : (
+		<span className='px-1 rounded-md bg-accent text-white'>Out of Stock</span>
 	);
 };

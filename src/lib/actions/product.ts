@@ -5,7 +5,7 @@ import { AddProductFormSchema } from '../zodSchema';
 import { prisma } from '@/utils/client';
 import { FormValues } from '@/app/components/forms/AddNewProductForm';
 import { revalidatePath } from 'next/cache';
-import { productListPath } from '@/app/(admin)/dashboard/menus/[id]/details/@modalDelete/(..)delete/page';
+import { Routes } from '@/constants/enums';
 
 //get product by id
 export async function getProductById(productId: number) {
@@ -27,8 +27,13 @@ export async function saveProduct(data: z.infer<typeof AddProductFormSchema>, ur
 				price: Number(data.price),
 				categoryId: Number(data.categoryId),
 				image: url,
+				available: data.available, // or any default value
+				quantity: +data.quantity, // or any default value
 			},
 		});
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.CATALOGUE}`);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_GRID}`);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -48,8 +53,13 @@ export async function editProduct(productId: number, data: FormValues, url: stri
 				price: Number(data.price),
 				categoryId: Number(data.categoryId),
 				image: url,
+				available: data.available,
+				quantity: +data.quantity,
 			},
 		});
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.CATALOGUE}`);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_GRID}`);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
 		return result;
 	} catch (error) {
 		console.error(error);
@@ -65,7 +75,9 @@ export async function deleteProduct(productId: number) {
 			},
 		});
 		//data mutation
-		revalidatePath(productListPath);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.CATALOGUE}`);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_GRID}`);
+		revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
 		return result;
 	} catch (error) {
 		console.error(error);

@@ -41,10 +41,10 @@ const ProductCard = ({ product }: { product: Product }) => {
 			<CardContent>
 				<div className='flex items-center justify-between'>
 					<p>
-						Total Orders: <span className='text-accent font-bold'>150</span>
+						Total Orders: <span className='text-accent font-bold'>{Math.floor(Math.random() * 450)}</span>
 					</p>
 					<p>
-						Revenue: <span className='text-accent font-bold'>$1000</span>
+						Revenue: <span className='text-accent font-bold'>{Math.floor(Math.random() * 1530)}</span>
 					</p>
 				</div>
 			</CardContent>

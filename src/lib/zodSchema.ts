@@ -5,4 +5,8 @@ export const AddProductFormSchema = z.object({
 	description: z.string().nonempty('The description is required').min(3, 'Enter the description').max(500),
 	price: z.string().min(1, 'Enter the price').regex(new RegExp('^[0-9]+$'), 'Enter Number'),
 	categoryId: z.string(),
+	currencyId: z.string(),
+	available: z.boolean(),
+	discount: z.boolean(),
+	quantity: z.string().min(1, 'Enter the quantity').regex(new RegExp('^[0-9]+$'), 'Enter Quantity'),
 });

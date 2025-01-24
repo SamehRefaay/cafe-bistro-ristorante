@@ -36,9 +36,11 @@ const page = async () => {
 										<div>{product?.name}</div>
 									</Link>
 								</TableCell>
-								<TableCell className='text-right'>{32642}</TableCell>
-								<TableCell className='text-right'>In Stock</TableCell>
-								<TableCell className='text-right'>{product.price}</TableCell>
+								<TableCell className='text-right'>{product.quantity}</TableCell>
+								<TableCell className='text-right'>
+									{product.available ? 'In Stock' : 'Out of Stock'}
+								</TableCell>
+								<TableCell className='text-right'>${product.price}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>

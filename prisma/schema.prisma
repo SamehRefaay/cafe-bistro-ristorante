@@ -25,6 +25,8 @@ model Product {
     description String
     price       Float
     image       String?
+    available   Boolean
+    quantity    Int
     categoryId  Int
     category    ProductCategory @relation(fields: [categoryId], references: [id])
 }
@@ -36,6 +38,12 @@ model ProductCategory {
     image       String?
     products    Product[]
 }
+
+// dont forget to update this
+//  npm i --save-dev prisma@latest                       │
+//  npm i @prisma/client@latest
+// "seed": "node prisma/seed.ts",
+// command npx prisma db seed   
 
 // model Account {
 //     id                 String    @id @default(cuid())

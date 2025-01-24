@@ -1,29 +1,40 @@
 'use client';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from 'react';
 import { AddProductFormSchema } from '@/lib/zodSchema';
 import { Prisma, ProductCategory } from '@prisma/client';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
 import { uploadProductImage } from '@/lib/upload';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { editProduct, saveProduct } from '@/lib/actions/product';
+import { Routes } from '@/constants/enums';
+import Image from 'next/image';
+//icons
+import { BsInfoSquareFill } from 'react-icons/bs';
+//toast
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//shadcn components
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Switch } from '@/components/ui/switch';
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+// custom components
 import FileInput from '@/app/components/forms/FileUpload';
-import { Routes } from '@/constants/enums';
-import { revalidatePath } from 'next/cache';
-import { Loader2 } from 'lucide-react';
-import { FaInfo } from 'react-icons/fa6';
-import Image from 'next/image';
+import SubmitButton from './SubmitButton';
+
+interface ProductCurrancy {
+	id: string;
+	name: string;
+	value: string;
+}
 
 interface AddNewProductFormProps {
 	categories: ProductCategory[];
+	currencies: ProductCurrancy[];
 	product?: Prisma.ProductGetPayload<{
 		include: {
 			category: true;
@@ -34,13 +45,18 @@ interface AddNewProductFormProps {
 
 export type FormValues = z.infer<typeof AddProductFormSchema>;
 
+const messages = {
+	name: 'Write your product name here.',
+	categroy: 'Select your product category for example "Launch" or "Dinner" ext.',
+	description: 'Write here a description for your product.',
+	currency: 'Select your currency.',
+	quantity: 'Enter product quantity.',
+	price: 'Enter product price.',
+	image: 'Upload an image for your product.',
+};
+
 const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps) => {
 	const [productImage, setProductImage] = useState<File | null>(null);
-	const [showProductNameInfo, setShowProductNameInfo] = useState(false);
-	const [showProductPriceInfo, setShowProductPriceInfo] = useState(false);
-	const [showProductImageInfo, setShowProductImageInfo] = useState(false);
-	const [showProductCategoryInfo, setShowProductCategoryInfo] = useState(false);
-	const [showProductDescriptionInfo, setShowProductDescriptionInfo] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
 
@@ -49,7 +65,11 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 			name: props.product?.name ?? undefined,
 			description: props.product?.description ?? undefined,
 			price: props.product?.price.toString() ?? undefined,
-			categoryId: props.product?.categoryId.toString() ?? undefined,
+			quantity: props.product?.quantity.toString() ?? undefined,
+			categoryId: props.product?.categoryId.toString() ?? '1',
+			currencyId: props.currencies[0].id,
+			available: props.product?.available ?? undefined,
+			discount: false,
 		},
 		resolver: zodResolver(AddProductFormSchema),
 	});
@@ -62,13 +82,11 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 				await editProduct(props.product?.id, data, url ?? '');
 				setLoading(false);
 				toast.success('Product updated successfully!');
-				revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
 			} else {
 				setLoading(true);
 				await saveProduct(data, url ?? '');
 				setLoading(false);
 				toast.success('Product added successfully!');
-				revalidatePath(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
 			}
 		} catch (error) {
 			console.error({ 'some thing went wrong': error });
@@ -78,185 +96,264 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 	};
 
 	return (
-		<div className='grid gap-20 grid-cols-1 lg:grid-cols-2 place-items-center '>
+		<div>
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit, (errors) => console.log(errors))}
-					className='w-full grid grid-cols-2 gap-4'
+					className='grid gap-20 grid-cols-1 lg:grid-cols-2 place-items-start'
 				>
-					{/* Product Name */}
-					<FormField
-						control={form.control}
-						name='name'
-						render={({ field }) => (
-							<FormItem className='col-span-2'>
-								<div className='flex gap-2 items-center'>
-									<FormLabel className='text-[17px]'>Product Name</FormLabel>
-									<div
-										onClick={() => setShowProductNameInfo((prev) => !prev)}
-										className='w-[16px] h-[16px] flex justify-center items-center cursor-pointer bg-secondary/80 rounded-full text-white'
-									>
-										<FaInfo size={10} />
+					<div className='w-full grid grid-cols-2 gap-4'>
+						{/* Product Name */}
+						<FormField
+							control={form.control}
+							name='name'
+							render={({ field }) => (
+								<FormItem className='col-span-2'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Product Name</FormLabel>
+										<DescriptionTooltip content={messages?.name} />
 									</div>
-								</div>
-								<FormControl>
-									<Input placeholder='Pizza' {...field} />
-								</FormControl>
-								{showProductNameInfo && <FormDescription>This is the product name.</FormDescription>}
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					{/* Product Category */}
-					<FormField
-						control={form.control}
-						name='categoryId'
-						render={({ field }) => (
-							<FormItem className='col-span-1'>
-								<div className='flex gap-2 items-center'>
-									<FormLabel className='text-[17px]'>Select Category</FormLabel>
-									<div
-										onClick={() => setShowProductCategoryInfo((prev) => !prev)}
-										className='w-[16px] h-[16px] flex justify-center items-center cursor-pointer bg-secondary/80 rounded-full text-white'
-									>
-										<FaInfo size={10} />
+									<FormControl>
+										<Input placeholder='Pizza' {...field} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* Product Category */}
+						<FormField
+							control={form.control}
+							name='categoryId'
+							render={({ field }) => (
+								<FormItem className='col-span-1'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Select Category</FormLabel>
+										<DescriptionTooltip content={messages?.categroy} />
 									</div>
-								</div>
-								<FormControl>
-									<Select value={String(field.value)} onValueChange={field.onChange}>
-										<SelectTrigger className=''>
-											<SelectValue
-												className='capitalize'
-												placeholder={props.categories[0].name}
-											/>
-										</SelectTrigger>
-										<SelectContent>
-											{props.categories.map((category) => (
-												<SelectItem
-													key={category.id}
+									<FormControl>
+										<Select value={String(field.value)} onValueChange={field.onChange}>
+											<SelectTrigger className=''>
+												<SelectValue
 													className='capitalize'
-													value={String(category.id)}
-												>
-													{category.name}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								</FormControl>
-								{showProductCategoryInfo && (
-									<FormDescription>
-										Select your product category for example &quot;Launch&quot; or
-										&quot;Dinner&quot; ext.
-									</FormDescription>
-								)}
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					{/* Product Price */}
-					<FormField
-						control={form.control}
-						name='price'
-						render={({ field }) => (
-							<FormItem className='col-span-1'>
-								<div className='flex gap-2 items-center'>
-									<FormLabel className='text-[17px]'>Price</FormLabel>
-									<div
-										onClick={() => setShowProductPriceInfo((prev) => !prev)}
-										className='w-[16px] h-[16px] flex justify-center items-center cursor-pointer bg-secondary/80 rounded-full text-white'
-									>
-										<FaInfo size={10} />
+													placeholder={props.categories[0].name}
+												/>
+											</SelectTrigger>
+											<SelectContent>
+												{props.categories.map((category) => (
+													<SelectItem
+														key={category.id}
+														className='capitalize'
+														value={String(category.id)}
+													>
+														{category.name}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* Product Currency */}
+						<FormField
+							control={form.control}
+							name='currencyId'
+							render={({ field }) => (
+								<FormItem className='col-span-1'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Currency</FormLabel>
+										<DescriptionTooltip content={messages?.currency} />
 									</div>
-								</div>
-								<FormControl>
-									<Input placeholder='$0' {...field} />
-								</FormControl>
-								{showProductPriceInfo && <FormDescription>This is the product price.</FormDescription>}
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					{/* Product Description */}
-					<FormField
-						control={form.control}
-						name='description'
-						render={({ field }) => (
-							<FormItem className='col-span-2'>
-								<div className='flex gap-2 items-center'>
-									<FormLabel className='text-[17px]'>Description</FormLabel>
-									<div
-										onClick={() => setShowProductDescriptionInfo((prev) => !prev)}
-										className='w-[16px] h-[16px] flex justify-center items-center cursor-pointer bg-secondary/80 rounded-full text-white'
-									>
-										<FaInfo size={10} />
+									<FormControl>
+										<Select value={String(field.value)} onValueChange={field.onChange}>
+											<SelectTrigger className=''>
+												<SelectValue placeholder={props.currencies[0]?.name} />
+											</SelectTrigger>
+											<SelectContent>
+												{props.currencies.map((currancy) => (
+													<SelectItem key={currancy.id} value={String(currancy.id)}>
+														{currancy.name}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* Product Quantity */}
+						<FormField
+							control={form.control}
+							name='quantity'
+							render={({ field }) => (
+								<FormItem className='col-span-1'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Quantity</FormLabel>
+										<DescriptionTooltip content={messages?.quantity} />
 									</div>
-								</div>
-								<FormControl>
-									<Textarea rows={4} placeholder='Message' {...field} />
-								</FormControl>
-								{showProductDescriptionInfo && (
-									<FormDescription>This is the product description.</FormDescription>
-								)}
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					{/* Product Image */}
-					<FormField
-						// control={form.control}
-						name='image'
-						render={({ field }) => (
-							<FormItem className='col-span-2'>
-								<div className='flex gap-2 items-center'>
-									<FormLabel className='text-[17px]'>Product Image</FormLabel>
-									<div
-										onClick={() => setShowProductImageInfo((prev) => !prev)}
-										className='w-[16px] h-[16px] flex justify-center items-center cursor-pointer bg-secondary/80 rounded-full text-white'
-									>
-										<FaInfo size={10} />
+									<FormControl>
+										<Input placeholder='01' {...field} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* Product Price */}
+						<FormField
+							control={form.control}
+							name='price'
+							render={({ field }) => (
+								<FormItem className='col-span-1'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Price</FormLabel>
+										<DescriptionTooltip content={messages?.price} />
 									</div>
-								</div>
-								<FormControl>
-									<FileInput
-										type='file'
-										onSelect={(e: any) => {
-											setProductImage(e.target.files?.[0] || null);
-										}}
+									<FormControl>
+										<Input placeholder='$0' {...field} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* Product Description */}
+						<FormField
+							control={form.control}
+							name='description'
+							render={({ field }) => (
+								<FormItem className='col-span-2'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Description</FormLabel>
+										<DescriptionTooltip content={messages?.description} />
+									</div>
+									<FormControl>
+										<Textarea rows={4} placeholder='Message' {...field} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* Product Image */}
+						<FormField
+							// control={form.control}
+							name='image'
+							render={({ field }) => (
+								<FormItem className='col-span-2'>
+									<div className='flex gap-2 items-center'>
+										<FormLabel className='text-[17px]'>Product Image</FormLabel>
+										<DescriptionTooltip content={messages?.image} />
+									</div>
+									<FormControl>
+										<FileInput
+											type='file'
+											onSelect={(e: any) => {
+												setProductImage(e.target.files?.[0] || null);
+											}}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+					</div>
+					<div className='w-full flex flex-col gap-5'>
+						{/* show product image */}
+						<div className='relative w-full h-[215px] group rounded-xl overflow-hidden'>
+							<Image
+								src={
+									productImage
+										? URL.createObjectURL(productImage) //load image when user browse new iamge to upload
+										: props.product?.image //load image if edit
+										? props.product.image //load image if add and user did not select image to upload yet.
+										: '/menu/our-menu-01.webp'
+								}
+								alt='product image'
+								className='group-hover:scale-110 duration-300 transition-transform'
+								fill
+							/>
+						</div>
+						{/* available status */}
+						<FormField
+							control={form.control}
+							name='available'
+							render={({ field }) => (
+								<FormItem className='flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm'>
+									<div className='space-y-0.5'>
+										<FormLabel>Status Available</FormLabel>
+										<FormDescription>
+											Status Available switch between Instock and Out of stock..
+										</FormDescription>
+									</div>
+									<FormControl>
+										{/* <Switch checked={field.value === 'true'} onCheckedChange={(checked) => field.onChange(checked ? 'true' : 'false')} /> */}
+										<Switch checked={field.value} onCheckedChange={field.onChange} aria-readonly />
+									</FormControl>
+								</FormItem>
+							)}
+						/>
+						{/* discount  */}
+						<FormField
+							control={form.control}
+							name='discount'
+							render={({ field }) => (
+								<FormItem className='flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm'>
+									<div className='space-y-0.5'>
+										<FormLabel>Discount Active</FormLabel>
+										<FormDescription>
+											Enable Discount to increase sales of this product.
+										</FormDescription>
+									</div>
+									<FormControl>
+										<Switch checked={field.value} onCheckedChange={field.onChange} aria-readonly />
+									</FormControl>
+								</FormItem>
+							)}
+						/>
+						{/* Submit buttons */}
+						<div className='w-full flex items-center justify-between'>
+							<div className='w-[150px]'>
+								<SubmitButton
+									loading={loading}
+									isEdit={isEdit}
+									text='Save'
+									loadingText='Please wait'
+									updatingText='Update'
+									background=''
+								/>
+							</div>
+							{!isEdit && (
+								<div className='w-[150px]'>
+									<SubmitButton
+										loading={loading}
+										isEdit={isEdit}
+										text='Save and Add'
+										loadingText='Please wait'
+										updatingText='Update'
+										background='accent'
 									/>
-								</FormControl>
-								{showProductImageInfo && <FormDescription>This is the product image.</FormDescription>}
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-
-					{loading ? (
-						<Button disabled>
-							<Loader2 className='animate-spin' />
-							Please wait
-						</Button>
-					) : (
-						<Button type='submit' className='h-full py-3 col-span-2'>
-							{isEdit ? 'Update' : 'Save'}
-						</Button>
-					)}
+								</div>
+							)}
+						</div>
+					</div>
 				</form>
 			</Form>
-			<div className='relative w-full h-[400px] group rounded-xl overflow-hidden'>
-				<Image
-					src={
-						productImage
-							? URL.createObjectURL(productImage) //load image when user browse new iamge to upload
-							: props.product?.image //load image if edit
-							? props.product.image //load image if add and user did not select image to upload yet.
-							: '/menu/our-menu-01.webp'
-					}
-					alt='product image'
-					className='group-hover:scale-110 duration-300 transition-transform'
-					fill
-				/>
-			</div>
 		</div>
 	);
 };
 export default AddNewProductForm;
+
+const DescriptionTooltip = ({ content }: { content: string }) => {
+	return (
+		<TooltipProvider>
+			<Tooltip>
+				<TooltipTrigger disabled>
+					<BsInfoSquareFill />
+				</TooltipTrigger>
+				<TooltipContent>
+					<p>{content}</p>
+				</TooltipContent>
+			</Tooltip>
+		</TooltipProvider>
+	);
+};

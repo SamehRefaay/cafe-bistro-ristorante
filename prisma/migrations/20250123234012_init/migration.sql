@@ -1,13 +1,14 @@
-/*
-  Warnings:
-
-  - You are about to drop the `VerificationRequest` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-PRAGMA foreign_keys=off;
-DROP TABLE "VerificationRequest";
-PRAGMA foreign_keys=on;
+-- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
+    "password" TEXT,
+    "email" TEXT NOT NULL,
+    "avatarUrl" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
 
 -- CreateTable
 CREATE TABLE "Product" (
@@ -16,6 +17,8 @@ CREATE TABLE "Product" (
     "description" TEXT NOT NULL,
     "price" REAL NOT NULL,
     "image" TEXT,
+    "available" BOOLEAN NOT NULL,
+    "quantity" INTEGER NOT NULL,
     "categoryId" INTEGER NOT NULL,
     CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "ProductCategory" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

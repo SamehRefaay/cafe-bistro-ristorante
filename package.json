@@ -2,7 +2,7 @@
 	"name": "cafe_bistro_ristorante_website",
 	"version": "0.1.0",
 	"prisma": {
-		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+		"seed": "node prisma/seed.ts"
 	},
 	"private": true,
 	"scripts": {
@@ -10,7 +10,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"seed": "node prisma/seed.js",
+		"seed": "node prisma/seed.ts",
 		"vercel-build": "prisma generate && prisma migrate deploy && next build"
 	},
 	"dependencies": {
@@ -26,6 +26,7 @@
 		"@radix-ui/react-select": "^2.1.4",
 		"@radix-ui/react-separator": "^1.1.1",
 		"@radix-ui/react-slot": "^1.1.1",
+		"@radix-ui/react-switch": "^1.1.2",
 		"@radix-ui/react-tooltip": "^1.1.6",
 		"@supabase/supabase-js": "^2.47.15",
 		"@types/bcrypt": "^5.0.2",
@@ -33,6 +34,7 @@
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"framer-motion": "^11.3.2",
+		"lorem-ipsum": "^2.0.8",
 		"lucide-react": "^0.469.0",
 		"next": "^14.2.3",
 		"next-auth": "^4.24.7",
@@ -52,6 +54,7 @@
 		"zod": "^3.24.1"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "^9.4.0",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",

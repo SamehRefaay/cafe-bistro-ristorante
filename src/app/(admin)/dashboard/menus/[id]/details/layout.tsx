@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
 const ProductDetailsLayout = ({ children, modalDelete }: { children: ReactNode; modalDelete: ReactNode }) => {
 	return (
 		<>
-			<div className='bg-red-200'>
+			<div>
 				<div>{children}</div>
 
 				<div>{modalDelete}</div>
