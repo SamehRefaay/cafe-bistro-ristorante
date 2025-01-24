@@ -24,3 +24,8 @@ export enum Routes {
 	ADDUSER = 'user/add',
 	USERLIST = 'user/list',
 }
+
+export enum SubmitterNames {
+	SAVE = 'Save',
+	SAVE_AND_ADD = 'Save and Add',
+}

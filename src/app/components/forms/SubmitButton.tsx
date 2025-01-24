@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 
 const SubmitButton = ({
+	onClick,
 	loading,
 	isEdit,
 	text = 'Save',
@@ -9,6 +10,7 @@ const SubmitButton = ({
 	updatingText = 'Update',
 	background = 'primary',
 }: {
+	onClick: () => void;
 	loading: boolean;
 	isEdit: boolean;
 	text?: string;
@@ -34,7 +36,8 @@ const SubmitButton = ({
 				</Button>
 			) : (
 				<Button
-					type='submit'
+					// type='submit'
+					onClick={onClick}
 					className={`w-full h-full py-3 col-span-2 text-white ${
 						background === 'primary'
 							? 'bg-primary'

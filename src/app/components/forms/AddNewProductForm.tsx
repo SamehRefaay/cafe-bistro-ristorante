@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { uploadProductImage } from '@/lib/upload';
 import { useRouter } from 'next/navigation';
 import { editProduct, saveProduct } from '@/lib/actions/product';
-import { Routes } from '@/constants/enums';
+import { Routes, SubmitterNames } from '@/constants/enums';
 import Image from 'next/image';
 //icons
 import { BsInfoSquareFill } from 'react-icons/bs';
@@ -57,6 +57,7 @@ const messages = {
 
 const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps) => {
 	const [productImage, setProductImage] = useState<File | null>(null);
+	const [saveAndAddd, setSaveAndAdd] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
 
@@ -74,24 +75,36 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 		resolver: zodResolver(AddProductFormSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormValues> = async (data) => {
+	const onSubmit: SubmitHandler<FormValues> = async (data, event) => {
 		try {
+			// const submitter = (event?.nativeEvent as SubmitEvent).submitter as HTMLButtonElement;
+			// submitter?.innerText === SubmitterNames.SAVE_AND_ADD ? setSaveAndAdd(true) : setSaveAndAdd(false);
 			const url = productImage ? await uploadProductImage(productImage) : props.product?.image;
 			if (isEdit && props.product) {
 				setLoading(true);
 				await editProduct(props.product?.id, data, url ?? '');
 				setLoading(false);
+				// form.resetField('name');
+				// form.resetField('categoryId');
+				// form.resetField('currencyId');
+				// form.resetField('quantity');
+				// form.resetField('price');
+				// form.resetField('description');
+				// form.resetField('available');
+				// form.resetField('discount');
+				form.reset({ name: '', price: '0', quantity: '0', available: false, description: '' });
 				toast.success('Product updated successfully!');
 			} else {
 				setLoading(true);
 				await saveProduct(data, url ?? '');
 				setLoading(false);
+				form.reset({ name: '', price: '0', quantity: '0', available: false, description: 'Message' });
 				toast.success('Product added successfully!');
 			}
 		} catch (error) {
 			console.error({ 'some thing went wrong': error });
 		} finally {
-			router.push(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
+			saveAndAddd ? router.refresh() : router.push(`/${Routes.DASHBOARD}/${Routes.MENUS}/${Routes.PRODUCT_LIST}`);
 		}
 	};
 
@@ -99,7 +112,7 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 		<div>
 			<Form {...form}>
 				<form
-					onSubmit={form.handleSubmit(onSubmit, (errors) => console.log(errors))}
+					onSubmit={form.handleSubmit(onSubmit, (errors) => {})}
 					className='grid gap-20 grid-cols-1 lg:grid-cols-2 place-items-start'
 				>
 					<div className='w-full grid grid-cols-2 gap-4'>
@@ -286,7 +299,6 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 										</FormDescription>
 									</div>
 									<FormControl>
-										{/* <Switch checked={field.value === 'true'} onCheckedChange={(checked) => field.onChange(checked ? 'true' : 'false')} /> */}
 										<Switch checked={field.value} onCheckedChange={field.onChange} aria-readonly />
 									</FormControl>
 								</FormItem>
@@ -314,6 +326,9 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 						<div className='w-full flex items-center justify-between'>
 							<div className='w-[150px]'>
 								<SubmitButton
+									onClick={() => {
+										setSaveAndAdd(false);
+									}}
 									loading={loading}
 									isEdit={isEdit}
 									text='Save'
@@ -325,6 +340,7 @@ const AddNewProductForm = ({ isEdit = false, ...props }: AddNewProductFormProps)
 							{!isEdit && (
 								<div className='w-[150px]'>
 									<SubmitButton
+										onClick={() => setSaveAndAdd(true)}
 										loading={loading}
 										isEdit={isEdit}
 										text='Save and Add'
